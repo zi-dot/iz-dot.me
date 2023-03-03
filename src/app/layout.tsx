@@ -1,5 +1,6 @@
-import "./globals.css";
 import "@/styles/global.css";
+import { FontStyle } from "@/lib/FontStyle";
+import { BaseHeaderClient } from "@/components/shared/BaseHeader";
 
 export const metadata = {
   title: "Create Next App",
@@ -16,7 +17,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ja">
-      <body>{children}</body>
+      <FontStyle />
+      <body>
+        <BaseHeaderClient />
+        {children}
+      </body>
     </html>
   );
 }
