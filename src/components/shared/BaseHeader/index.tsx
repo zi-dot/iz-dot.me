@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { FC, useMemo, useRef, useState } from "react";
 import styles from "./index.module.css";
+import { usePathname } from "next/navigation";
 
 type Props = {
   currentPath: "home" | "posts" | "about" | undefined;
@@ -15,13 +16,13 @@ const aboutLinkId = "about_link";
 
 const NAV_WIDTH = 172;
 
-export const BaseHeader: FC<Props> = ({ currentPath: initialPath }) => {
-  const [currentPath, setCurrentPath] = useState(initialPath);
+export const BaseHeader: FC<Props> = ({ currentPath }) => {
   const [isClose, setIsClose] = useState(true);
 
   const homeLinkRef = useRef<HTMLAnchorElement>(null);
   const postsLinkRef = useRef<HTMLAnchorElement>(null);
   const aboutLinkRef = useRef<HTMLAnchorElement>(null);
+  const separatorRef = useRef<HTMLLIElement>(null);
 
   const navListWidth = () => {
     switch (currentPath) {
@@ -38,8 +39,7 @@ export const BaseHeader: FC<Props> = ({ currentPath: initialPath }) => {
 
   const calcTranslateX = () => {
     const separatorWidth =
-      document.getElementById("separator-1")?.getBoundingClientRect().width ??
-      22;
+      separatorRef.current?.getBoundingClientRect().width ?? 22;
     switch (currentPath) {
       case "home":
         return (
@@ -66,10 +66,11 @@ export const BaseHeader: FC<Props> = ({ currentPath: initialPath }) => {
       <Link href="/" className={styles["header__logo"]}>
         <Image
           src="/avator.png"
-          width={30}
-          height={30}
+          width={120}
+          height={120}
           alt=""
           className={styles["logo__avator-icon"]}
+          quality="100"
         />
         <p className={styles["logo__name"]}>iz_dot</p>
       </Link>
@@ -107,13 +108,12 @@ export const BaseHeader: FC<Props> = ({ currentPath: initialPath }) => {
                 id={homeLinkId}
                 onClick={() => {
                   setIsClose(true);
-                  setCurrentPath("home");
                 }}
               >
                 home
               </Link>
             </li>
-            <li className={styles["nav__item-separator"]} id="separator-1">
+            <li className={styles["nav__item-separator"]} ref={separatorRef}>
               /
             </li>
             <li className={styles["nav__item"]}>
@@ -123,15 +123,12 @@ export const BaseHeader: FC<Props> = ({ currentPath: initialPath }) => {
                 id={postsLinkId}
                 onClick={() => {
                   setIsClose(true);
-                  setCurrentPath("posts");
                 }}
               >
                 posts
               </Link>
             </li>
-            <li className={styles["nav__item-separator"]} id="separator-2">
-              /
-            </li>
+            <li className={styles["nav__item-separator"]}>/</li>
             <li className={styles["nav__item"]}>
               <Link
                 href="/about"
@@ -139,7 +136,6 @@ export const BaseHeader: FC<Props> = ({ currentPath: initialPath }) => {
                 id={aboutLinkId}
                 onClick={() => {
                   setIsClose(true);
-                  setCurrentPath("about");
                 }}
               >
                 about
@@ -153,14 +149,14 @@ export const BaseHeader: FC<Props> = ({ currentPath: initialPath }) => {
 };
 
 export const BaseHeaderClient: FC = () => {
+  const pathname = usePathname();
   const currentPath = useMemo(() => {
-    const path = location.pathname.replace(/\?.*/g, "");
-    console.log(path);
+    const path = pathname.replace(/\?.*/g, "");
     if (path === "/") return "home";
     if (path.startsWith("/posts")) return "posts";
     if (path.startsWith("/about")) return "about";
     return undefined;
-  }, []);
+  }, [pathname]);
 
   return <BaseHeader currentPath={currentPath} />;
 };
