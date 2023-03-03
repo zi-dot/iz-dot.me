@@ -68,12 +68,12 @@
   overflow: hidden;
   transition: all 0.3s ease;
   transform-origin: right;
-  padding-left: 172px;
+  padding-left: 105;
   width: 0;
 }
 
 .nav__list {
-  transform: translateX(-172px);
+  transform: translateX(-105px);
   transition: all 0.3s ease;
   padding: 0;
   display: flex;

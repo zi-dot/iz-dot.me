@@ -7,21 +7,21 @@ import styles from "./index.module.css";
 import { usePathname } from "next/navigation";
 
 type Props = {
-  currentPath: "home" | "posts" | "about" | undefined;
+  currentPath: NavList | undefined;
 };
 
-const homeLinkId = "home_link";
-const postsLinkId = "posts_link";
-const aboutLinkId = "about_link";
+const HOME_LINK_ID = "home_link";
+const POSTS_LINK_ID = "posts_link";
+const NAV_WIDTH = 105;
+const NAV_LIST = ["home", "posts"] as const;
 
-const NAV_WIDTH = 172;
+type NavList = (typeof NAV_LIST)[number];
 
 export const BaseHeader: FC<Props> = ({ currentPath }) => {
   const [isClose, setIsClose] = useState(true);
 
   const homeLinkRef = useRef<HTMLAnchorElement>(null);
   const postsLinkRef = useRef<HTMLAnchorElement>(null);
-  const aboutLinkRef = useRef<HTMLAnchorElement>(null);
   const separatorRef = useRef<HTMLLIElement>(null);
 
   const navListWidth = () => {
@@ -30,8 +30,6 @@ export const BaseHeader: FC<Props> = ({ currentPath }) => {
         return homeLinkRef.current?.getBoundingClientRect().width;
       case "posts":
         return postsLinkRef.current?.getBoundingClientRect().width;
-      case "about":
-        return aboutLinkRef.current?.getBoundingClientRect().width;
       case undefined:
         return 0;
     }
@@ -45,16 +43,10 @@ export const BaseHeader: FC<Props> = ({ currentPath }) => {
         return (
           NAV_WIDTH -
           ((postsLinkRef.current?.getBoundingClientRect().width ?? 42) +
-            (aboutLinkRef.current?.getBoundingClientRect().width ?? 42) +
-            separatorWidth * 2)
+            separatorWidth *
+            (NAV_LIST.length - (NAV_LIST.indexOf(currentPath) + 1)))
         );
       case "posts":
-        return (
-          NAV_WIDTH -
-          ((aboutLinkRef.current?.getBoundingClientRect().width ?? 42) +
-            separatorWidth)
-        );
-      case "about":
         return NAV_WIDTH;
       case undefined:
         return NAV_WIDTH;
@@ -89,7 +81,7 @@ export const BaseHeader: FC<Props> = ({ currentPath }) => {
         <div
           className={styles["nav__list-outer"]}
           style={{
-            paddingLeft: isClose ? navListWidth() ?? "44px" : `${NAV_WIDTH}px`,
+            paddingLeft: isClose ? navListWidth() ?? "42px" : `${NAV_WIDTH}px`,
           }}
         >
           <ul
@@ -105,7 +97,7 @@ export const BaseHeader: FC<Props> = ({ currentPath }) => {
               <Link
                 href="/"
                 ref={homeLinkRef}
-                id={homeLinkId}
+                id={HOME_LINK_ID}
                 onClick={() => {
                   setIsClose(true);
                 }}
@@ -120,25 +112,12 @@ export const BaseHeader: FC<Props> = ({ currentPath }) => {
               <Link
                 href="posts"
                 ref={postsLinkRef}
-                id={postsLinkId}
+                id={POSTS_LINK_ID}
                 onClick={() => {
                   setIsClose(true);
                 }}
               >
                 posts
-              </Link>
-            </li>
-            <li className={styles["nav__item-separator"]}>/</li>
-            <li className={styles["nav__item"]}>
-              <Link
-                href="/about"
-                ref={aboutLinkRef}
-                id={aboutLinkId}
-                onClick={() => {
-                  setIsClose(true);
-                }}
-              >
-                about
               </Link>
             </li>
           </ul>
@@ -154,7 +133,6 @@ export const BaseHeaderClient: FC = () => {
     const path = pathname.replace(/\?.*/g, "");
     if (path === "/") return "home";
     if (path.startsWith("/posts")) return "posts";
-    if (path.startsWith("/about")) return "about";
     return undefined;
   }, [pathname]);
 
