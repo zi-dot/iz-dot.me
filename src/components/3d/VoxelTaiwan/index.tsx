@@ -2,7 +2,7 @@
 
 import { OrbitControls, OrthographicCamera } from "@react-three/drei";
 import { Canvas, useFrame, useLoader, useThree } from "@react-three/fiber";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { FC, useCallback, useEffect, useRef, useState } from "react";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import * as THREE from "three";
 import styles from "./index.module.css";
@@ -37,7 +37,7 @@ const Voxel = ({ scale }: { scale: number }) => {
 };
 
 // IDEAL VIEWPORT = 1200
-export const VoxelTaiwan = () => {
+export const VoxelTaiwan: FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const [scale, setScale] = useState(1);

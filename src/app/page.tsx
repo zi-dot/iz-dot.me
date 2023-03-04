@@ -1,10 +1,9 @@
-import Link from "next/link";
 import styles from "./page.module.css";
 
 import "@/styles/global.css";
 import { inter } from "@/lib/fonts";
-import { VoxelTaiwan } from "@/components/3d/VoxelTaiwan";
 import NoSsr from "@/components/shared/NoSsr";
+import { DynamicVoxel } from "@/components/3d/VoxelTaiwan/dynamic";
 
 export default function Home() {
   return (
@@ -12,7 +11,7 @@ export default function Home() {
       <h1 className={inter.className}>zi</h1>
       <NoSsr>
         <div style={{ width: "100%", height: "100vw" }}>
-          <VoxelTaiwan />
+          <DynamicVoxel />
         </div>
       </NoSsr>
     </main>
