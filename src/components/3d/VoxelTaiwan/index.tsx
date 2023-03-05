@@ -91,6 +91,7 @@ const CameraWithScrollControl = ({
     );
   }, [containerRef, camera]);
 
+  moveCamera();
   useEffect(() => {
     moveCamera();
     window.addEventListener("scroll", moveCamera);
