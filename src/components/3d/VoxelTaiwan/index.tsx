@@ -7,7 +7,6 @@ import { Group, Mesh } from "three";
 import * as THREE from "three";
 import { GLTF } from "three/examples/jsm/loaders/GLTFLoader";
 import styles from "./index.module.css";
-import { warn } from "console";
 
 // BASE VIEWPORT = 1200
 const BASE_RADIUS = 2.4;
@@ -16,6 +15,7 @@ const Voxel = ({ meshRef }: { meshRef: RefObject<Mesh> }) => {
   const group = useRef<Group>(null);
   const { nodes, materials } = useGLTF("/taiwan.glb") as GLTF & ObjectMap;
   const { camera, size } = useThree();
+  const init = useRef(false);
 
   useFrame(({ clock }) => {
     camera.lookAt(0, 0, 0);
@@ -37,8 +37,12 @@ const Voxel = ({ meshRef }: { meshRef: RefObject<Mesh> }) => {
     if (meshRef.current === null) return;
 
     const scale = size.width / 1200;
+
+    // only calls once
+    if (init.current) return;
     meshRef.current.scale.set(scale, scale, scale);
     meshRef.current.position.set(0, scale * BASE_RADIUS * -1.2, 0);
+    init.current = true;
   }, [meshRef, size.width]);
 
   return (
