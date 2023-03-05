@@ -31,7 +31,7 @@ body {
 }
 
 body {
-  line-height: 1.5;
+  line-height: 1.2;
   webkit-font-smoothing: antialiased;
 }
 
@@ -62,4 +62,5 @@ h4,
 h5,
 h6 {
   overflow-wrap: break-word;
+  margin-block: 0;
 }

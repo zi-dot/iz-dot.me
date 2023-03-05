@@ -25,7 +25,8 @@ const Voxel = ({ meshRef }: { meshRef: RefObject<Mesh> }) => {
     meshRef.current.position.lerp(
       new THREE.Vector3(
         0,
-        scale * BASE_RADIUS * -1 + Math.sin(clock.getElapsedTime() * 0.4) * 0.2,
+        scale * BASE_RADIUS * -1 +
+        Math.sin(clock.getElapsedTime() * 0.5) * 0.05,
         0
       ),
       0.07
@@ -68,12 +69,11 @@ const CameraWithScrollControl = ({
     const scaledRadius = scale * BASE_RADIUS * 1.5;
 
     const height = containerRef.current?.getBoundingClientRect().height;
-    const scrollInside =
-      scrollY - containerRef.current?.getBoundingClientRect().top;
+    const scrollInside = scrollY;
     const scrollPercentage = Math.min(Math.max(scrollInside / height, 0), 1);
 
-    const latitude = 30 + scrollPercentage * -60;
-    const longitude = 60 + scrollPercentage * 60;
+    const latitude = 25 + scrollPercentage * -45;
+    const longitude = 60 + scrollPercentage * -10;
 
     const cameraPosX =
       scaledRadius *

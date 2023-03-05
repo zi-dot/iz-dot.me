@@ -4,16 +4,33 @@ import "@/styles/global.css";
 import { inter } from "@/lib/fonts";
 import NoSsr from "@/components/shared/NoSsr";
 import { DynamicVoxel } from "@/components/3d/VoxelTaiwan/dynamic";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className={styles.main}>
-      <h1 className={inter.className}>zi</h1>
-      <NoSsr>
-        <div style={{ width: "100%", height: "100vw" }}>
-          <DynamicVoxel />
+    <>
+      <section className={styles["main__top"]}>
+        <div className={styles["top__description-box"]}>
+          <h1 className={styles["description-box__title"]}>Webが好きです。</h1>
+          <h2 className={styles["description-box__name"]}>iz_dot / zi</h2>
+          <p className={styles["description-box__real-name"]}>Ryoji Kono</p>
+          <p className={styles["description-box__description-hello"]}>
+            はじめまして、Webフロントエンド開発者のiz_dotです。たまにziという名前も使ってます。
+          </p>
+          <p className={styles["description-box__description-goal"]}>
+            人にとって使いやすくワクワクするUIやグラフィックを設計・実装できる人に憧れています。まだ道すがらですが、日々目標に到達できるよう勤しんでいます。
+          </p>
+          <Link href="/about" className={styles["description-box__read-more"]}>
+            more →
+          </Link>
         </div>
-      </NoSsr>
-    </main>
+        <div className={styles["top__voxel"]}>
+          <NoSsr>
+            <DynamicVoxel />
+          </NoSsr>
+        </div>
+      </section>
+      <section className={styles["main__links"]}></section>
+    </>
   );
 }
