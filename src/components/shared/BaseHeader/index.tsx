@@ -42,7 +42,7 @@ export const BaseHeader: FC<Props> = ({ currentPath }) => {
       case "home":
         return (
           NAV_WIDTH -
-          ((postsLinkRef.current?.getBoundingClientRect().width ?? 42) +
+          ((postsLinkRef.current?.getBoundingClientRect().width ?? 41) +
             separatorWidth *
             (NAV_LIST.length - (NAV_LIST.indexOf(currentPath) + 1)))
         );
@@ -95,6 +95,7 @@ export const BaseHeader: FC<Props> = ({ currentPath }) => {
           >
             <li className={styles["nav__item"]} role="listitem">
               <Link
+                className={styles["nav__link"]}
                 href="/"
                 ref={homeLinkRef}
                 id={HOME_LINK_ID}
@@ -111,6 +112,7 @@ export const BaseHeader: FC<Props> = ({ currentPath }) => {
             <li className={styles["nav__item"]}>
               <Link
                 href="posts"
+                className={styles["nav__link"]}
                 ref={postsLinkRef}
                 id={POSTS_LINK_ID}
                 onClick={() => {

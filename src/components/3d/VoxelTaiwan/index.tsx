@@ -21,18 +21,24 @@ const Voxel = ({ meshRef }: { meshRef: RefObject<Mesh> }) => {
     if (meshRef.current === null) return;
 
     const scale = size.width / 1200;
-    meshRef.current.scale.set(scale, scale, scale);
-    meshRef.current.position.set(0, scale * BASE_RADIUS * -1, 0);
 
     meshRef.current.position.lerp(
       new THREE.Vector3(
         0,
-        scale * BASE_RADIUS * -1 + Math.sin(clock.getElapsedTime() * 0.3),
+        scale * BASE_RADIUS * -1 + Math.sin(clock.getElapsedTime() * 0.4) * 0.2,
         0
       ),
-      0.1
+      0.07
     );
   });
+
+  useEffect(() => {
+    if (meshRef.current === null) return;
+
+    const scale = size.width / 1200;
+    meshRef.current.scale.set(scale, scale, scale);
+    meshRef.current.position.set(0, scale * BASE_RADIUS * -1.2, 0);
+  }, [meshRef, size.width]);
 
   return (
     <group dispose={null} ref={group}>
@@ -104,10 +110,6 @@ const ResizeHandler = ({ meshRef }: { meshRef: RefObject<Mesh> }) => {
     meshRef.current.scale.set(scale, scale, scale);
     meshRef.current.position.set(0, scale * BASE_RADIUS * -1, 0);
   }, [meshRef, size.width]);
-  //
-  // useFrame(() => {
-  //   handleResize();
-  // });
 
   useEffect(() => {
     window.addEventListener("resize", handleResize);
@@ -115,10 +117,6 @@ const ResizeHandler = ({ meshRef }: { meshRef: RefObject<Mesh> }) => {
   }, [handleResize]);
 
   return null;
-};
-
-const Appearance = () => {
-  return useFrame(({ clock, camera }) => { });
 };
 
 export const VoxelTaiwan: FC = () => {
@@ -132,7 +130,6 @@ export const VoxelTaiwan: FC = () => {
         <ambientLight intensity={0.8} position={[0.5, 3, 2]} />
         <Voxel meshRef={meshRef} />
         <ResizeHandler meshRef={meshRef} />
-        <Appearance />
       </Canvas>
     </div>
   );

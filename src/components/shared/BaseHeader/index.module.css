@@ -58,7 +58,6 @@
 }
 
 .nav__arrow img {
-  user-drag: none;
   -webkit-user-drag: none;
   -moz-user-drag: none;
   vertical-align: middle;
@@ -86,6 +85,11 @@
   margin: 0;
   font-size: 1rem;
   flex-shrink: 0;
+}
+
+.nav__link {
+  display: block;
+  padding: 8px 0;
 }
 
 .nav__item-separator {
