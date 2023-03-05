@@ -1,12 +1,13 @@
 "use client";
 
-import { OrthographicCamera, useGLTF } from "@react-three/drei";
+import { OrbitControls, OrthographicCamera, useGLTF } from "@react-three/drei";
 import { Canvas, ObjectMap, useFrame, useThree } from "@react-three/fiber";
 import { FC, RefObject, useCallback, useEffect, useRef } from "react";
 import { Group, Mesh } from "three";
 import * as THREE from "three";
 import { GLTF } from "three/examples/jsm/loaders/GLTFLoader";
 import styles from "./index.module.css";
+import { warn } from "console";
 
 // BASE VIEWPORT = 1200
 const BASE_RADIUS = 2.4;
@@ -25,8 +26,7 @@ const Voxel = ({ meshRef }: { meshRef: RefObject<Mesh> }) => {
     meshRef.current.position.lerp(
       new THREE.Vector3(
         0,
-        scale * BASE_RADIUS * -1 +
-        Math.sin(clock.getElapsedTime() * 0.5) * 0.05,
+        scale * BASE_RADIUS * -1 + Math.sin(clock.getElapsedTime() * 0.8) * 0.1,
         0
       ),
       0.07
@@ -66,7 +66,7 @@ const CameraWithScrollControl = ({
 
     const { width } = containerRef.current.getBoundingClientRect();
     const scale = width / 1200;
-    const scaledRadius = scale * BASE_RADIUS * 1.5;
+    const scaledRadius = scale * BASE_RADIUS * 100;
 
     const height = containerRef.current?.getBoundingClientRect().height;
     const scrollInside = scrollY;
@@ -85,7 +85,10 @@ const CameraWithScrollControl = ({
       Math.cos((latitude * Math.PI) / 180) *
       Math.sin((longitude * Math.PI) / 180);
 
-    camera.position.set(cameraPosX, cameraPosY, cameraPosZ);
+    camera.position.lerp(
+      new THREE.Vector3(cameraPosX, cameraPosY, cameraPosZ),
+      0.03
+    );
   }, [containerRef, camera]);
 
   useEffect(() => {
@@ -93,10 +96,6 @@ const CameraWithScrollControl = ({
     window.addEventListener("scroll", moveCamera);
     return () => window.removeEventListener("scroll", moveCamera);
   }, [moveCamera]);
-
-  useFrame(({ clock }) => {
-    if (clock.getElapsedTime() > 1) return;
-  });
 
   return <OrthographicCamera makeDefault zoom={200} />;
 };
@@ -130,6 +129,7 @@ export const VoxelTaiwan: FC = () => {
         <ambientLight intensity={0.8} position={[0.5, 3, 2]} />
         <Voxel meshRef={meshRef} />
         <ResizeHandler meshRef={meshRef} />
+        <OrbitControls enableZoom={false} />
       </Canvas>
     </div>
   );
