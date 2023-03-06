@@ -1,17 +1,24 @@
 import styles from "./page.module.css";
 
 import "@/styles/global.css";
-import { inter } from "@/lib/fonts";
 import NoSsr from "@/components/shared/NoSsr";
 import { DynamicVoxel } from "@/components/3d/VoxelTaiwan/dynamic";
 import Link from "next/link";
+import clsx from "clsx";
 
 export default function Home() {
   return (
     <>
       <section className={styles["main__top"]}>
         <div className={styles["top__description-box"]}>
-          <h1 className={styles["description-box__title"]}>Webが好きです。</h1>
+          <h1
+            className={clsx(
+              styles["description-box__title"],
+              styles["description-box__title--appear"]
+            )}
+          >
+            Webが好きです。
+          </h1>
           <h2 className={styles["description-box__name"]}>iz_dot / zi</h2>
           <p className={styles["description-box__real-name"]}>Ryoji Kono</p>
           <p className={styles["description-box__description-hello"]}>

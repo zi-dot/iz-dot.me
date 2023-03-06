@@ -29,7 +29,7 @@ const Voxel = ({ meshRef }: { meshRef: RefObject<Mesh> }) => {
         scale * BASE_RADIUS * -1 + Math.sin(clock.getElapsedTime() * 0.8) * 0.1,
         0
       ),
-      0.07
+      1
     );
   });
 
