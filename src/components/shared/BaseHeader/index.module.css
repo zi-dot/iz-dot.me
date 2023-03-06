@@ -46,16 +46,16 @@
 }
 
 .nav__arrow-outer {
-  margin-right: 16px;
-  margin-top: 2px;
+  margin-right: 12px;
   cursor: pointer;
 }
 
 .nav__arrow {
-  padding: 0 4px;
+  padding: 4px 8px;
   display: block;
-  transition: all 0.25s cubic-bezier(0.39, -0.98, 0.62, 1.86);
+  transition: transform 0.25s cubic-bezier(0.39, -0.98, 0.62, 1.86);
   transform: rotate(180deg);
+  border-radius: 4px;
 }
 
 .nav__arrow--close {
@@ -105,6 +105,13 @@
 .nav__item a {
   text-decoration: none;
 }
-.nav__item a:hover {
-  text-decoration: underline;
+
+.current {
+  font-weight: bold;
+}
+
+@media screen and (min-width: 768px) {
+  .nav__arrow:hover {
+    background-color: rgb(var(--color-bg-gray));
+  }
 }

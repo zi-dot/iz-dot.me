@@ -13,7 +13,7 @@ type Props = {
 const HOME_LINK_ID = "home_link";
 const POSTS_LINK_ID = "posts_link";
 const ABOUNT_LINK_ID = "about_link";
-const NAV_WIDTH = 172;
+const TOTAL_NAV_WIDTH_FALLBACK = 174;
 const NAV_LIST = ["home", "posts", "about"] as const;
 
 type NavList = (typeof NAV_LIST)[number];
@@ -26,42 +26,81 @@ export const BaseHeader: FC<Props> = ({ currentPath }) => {
   const aboutLinkRef = useRef<HTMLAnchorElement>(null);
   const separatorRef = useRef<HTMLLIElement>(null);
 
+  const totalNavListWidth = useMemo(() => {
+    if (
+      homeLinkRef.current === null ||
+      postsLinkRef.current === null ||
+      aboutLinkRef.current === null ||
+      separatorRef.current === null
+    )
+      return TOTAL_NAV_WIDTH_FALLBACK;
+
+    const homeLinkWidth = homeLinkRef.current.getBoundingClientRect().width;
+    const postsLinkWidth = postsLinkRef.current.getBoundingClientRect().width;
+    const aboutLinkWidth = aboutLinkRef.current.getBoundingClientRect().width;
+    const separatorWidth = separatorRef.current.getBoundingClientRect().width;
+
+    return (
+      homeLinkWidth +
+      postsLinkWidth +
+      aboutLinkWidth +
+      separatorWidth * (NAV_LIST.length - 1)
+    );
+  }, [homeLinkRef, postsLinkRef, aboutLinkRef, separatorRef]);
+
   const navListWidth = () => {
+    const margin = 4;
     switch (currentPath) {
       case "home":
-        return homeLinkRef.current?.getBoundingClientRect().width;
+        return (
+          Math.ceil(homeLinkRef.current?.getBoundingClientRect().width ?? 45) +
+          margin
+        );
       case "posts":
-        return postsLinkRef.current?.getBoundingClientRect().width;
+        return (
+          Math.ceil(postsLinkRef.current?.getBoundingClientRect().width ?? 44) +
+          margin
+        );
       case "about":
-        return aboutLinkRef.current?.getBoundingClientRect().width;
+        return (
+          Math.ceil(aboutLinkRef.current?.getBoundingClientRect().width ?? 45) +
+          margin
+        );
       case undefined:
         return 0;
     }
   };
 
   const calcTranslateX = () => {
-    const separatorWidth =
-      separatorRef.current?.getBoundingClientRect().width ?? 22;
+    const separatorWidth = Math.ceil(
+      separatorRef.current?.getBoundingClientRect().width ?? 22
+    );
+    const postLinkWidth = Math.ceil(
+      postsLinkRef.current?.getBoundingClientRect().width ?? 44
+    );
+    const aboutLinkWidth = Math.ceil(
+      aboutLinkRef.current?.getBoundingClientRect().width ?? 44
+    );
     switch (currentPath) {
       case "home":
         return (
-          NAV_WIDTH -
-          ((postsLinkRef.current?.getBoundingClientRect().width ?? 41) +
-            (aboutLinkRef.current?.getBoundingClientRect().width ?? 44) +
+          totalNavListWidth -
+          (postLinkWidth +
+            aboutLinkWidth +
             separatorWidth *
             (NAV_LIST.length - (NAV_LIST.indexOf(currentPath) + 1)))
         );
       case "posts":
         return (
-          NAV_WIDTH -
-          ((aboutLinkRef.current?.getBoundingClientRect().width ?? 44) +
+          totalNavListWidth -
+          (aboutLinkWidth +
             separatorWidth *
             (NAV_LIST.length - (NAV_LIST.indexOf(currentPath) + 1)))
         );
       case "about":
-        return NAV_WIDTH;
+        return totalNavListWidth;
       case undefined:
-        return NAV_WIDTH;
+        return totalNavListWidth;
     }
   };
 
@@ -96,7 +135,7 @@ export const BaseHeader: FC<Props> = ({ currentPath }) => {
             style={{
               paddingLeft: isClose
                 ? navListWidth() ?? "45px"
-                : `${NAV_WIDTH}px`,
+                : `${totalNavListWidth}px`,
             }}
           >
             <ul
@@ -104,13 +143,16 @@ export const BaseHeader: FC<Props> = ({ currentPath }) => {
               role="list"
               style={{
                 transform: isClose
-                  ? `translateX(-${calcTranslateX()}px)`
-                  : `translateX(-${NAV_WIDTH}px)`,
+                  ? `translateX(-${calcTranslateX() + 2}px)`
+                  : `translateX(-${totalNavListWidth}px)`,
               }}
             >
               <li className={styles["nav__item"]} role="listitem">
                 <Link
-                  className={styles["nav__link"]}
+                  className={clsx(
+                    styles["nav__link"],
+                    currentPath === "home" && styles.current
+                  )}
                   href="/"
                   ref={homeLinkRef}
                   id={HOME_LINK_ID}
@@ -127,7 +169,10 @@ export const BaseHeader: FC<Props> = ({ currentPath }) => {
               <li className={styles["nav__item"]}>
                 <Link
                   href="posts"
-                  className={styles["nav__link"]}
+                  className={clsx(
+                    styles["nav__link"],
+                    currentPath === "posts" && styles.current
+                  )}
                   ref={postsLinkRef}
                   id={POSTS_LINK_ID}
                   onClick={() => {
@@ -141,7 +186,10 @@ export const BaseHeader: FC<Props> = ({ currentPath }) => {
               <li className={styles["nav__item"]}>
                 <Link
                   href="about"
-                  className={styles["nav__link"]}
+                  className={clsx(
+                    styles["nav__link"],
+                    currentPath === "about" && styles.current
+                  )}
                   ref={aboutLinkRef}
                   id={ABOUNT_LINK_ID}
                   onClick={() => {
