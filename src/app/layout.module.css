@@ -3,7 +3,7 @@
   margin-top: 60px;
   flex-direction: column;
   justify-content: space-between;
-  max-width: 780px;
+  max-width: calc(780px + 24px * 2);
   margin: 0 auto;
   padding: 0 24px;
   background-color: rgb(var(--color-bg-base));

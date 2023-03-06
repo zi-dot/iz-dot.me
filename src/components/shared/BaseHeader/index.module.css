@@ -9,10 +9,10 @@
 }
 
 .header__inner {
-  max-width: 780px;
+  max-width: calc(780px + 24px * 2);
   margin: 0 auto;
   min-height: 60px;
-  padding: 0 20px;
+  padding: 0 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
