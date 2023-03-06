@@ -7,10 +7,10 @@ export const metadata = {
 
 const About = () => {
   return (
-    <>
-      <h1>Posts</h1>
-      <p>Will posts many blogs and works</p>
-    </>
+    <div className={style.box}>
+      <h1 style={{ marginBottom: "16px" }}>Posts</h1>
+      <p> 🚧 Under construction </p>
+    </div>
   );
 };
 

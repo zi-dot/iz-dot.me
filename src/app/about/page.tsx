@@ -7,10 +7,10 @@ export const metadata = {
 
 const About = () => {
   return (
-    <main className={style.page}>
-      <h1>About</h1>
-      <p>Web frontend engineer</p>
-    </main>
+    <div className={style.box}>
+      <h1 style={{ marginBottom: "16px" }}>About</h1>
+      <p> 🚧 Under construction </p>
+    </div>
   );
 };
 
