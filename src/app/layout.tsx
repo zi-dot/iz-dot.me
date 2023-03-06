@@ -2,6 +2,7 @@ import "@/styles/global.css";
 import styles from "./layout.module.css";
 import { FontStyle } from "@/lib/FontStyle";
 import { BaseHeaderClient } from "@/components/shared/BaseHeader";
+import { BaseFooter } from "@/components/shared/BaseFooter";
 
 export const metadata = {
   title: "iz_dot / zi",
@@ -22,6 +23,7 @@ export default function RootLayout({
       <body>
         <BaseHeaderClient />
         <main className={styles.main}>{children}</main>
+        <BaseFooter />
       </body>
     </html>
   );

@@ -73,7 +73,10 @@ export default function Home() {
             勤しんでいます。
           </p>
           <Link href="/about" className={styles["description-box__read-more"]}>
-            more →
+            more{" "}
+            <span className={styles["description-box__read-more-arrow"]}>
+              →
+            </span>
           </Link>
         </div>
         <div className={styles["top__voxel"]}>

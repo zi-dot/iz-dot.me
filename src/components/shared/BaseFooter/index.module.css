@@ -1,0 +1,12 @@
+.footer {
+  width: 100%;
+}
+
+.footer-copy-right {
+  margin: 0 auto;
+  max-width: calc(780px + 24px * 2);
+  color: rgb(var(--color-typo-light));
+  padding: 16px 24px;
+  text-align: center;
+  inset: 0;
+}
