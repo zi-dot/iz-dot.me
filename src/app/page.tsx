@@ -75,7 +75,18 @@ export default function Home() {
           </NoSsr>
         </div>
       </section>
-      <section className={styles["main__links"]}></section>
+      <section className={styles["main__links"]}>
+        <h2>Links</h2>
+        <p>この辺でつぶいたり活動したりしています。</p>
+        <div>
+          <Link href="/posts">
+            <p>Posts</p>
+            <p>日々の考えや作ったもの置き場</p>
+          </Link>
+          <a href="https://twitter.com/iz_dot" aria-label="twitter"></a>
+          <a href="https://github.com/RyojiK74" aria-label="github"></a>
+        </div>
+      </section>
     </>
   );
 }
