@@ -88,14 +88,14 @@ export const BaseHeader: FC<Props> = ({ currentPath }) => {
           (postLinkWidth +
             aboutLinkWidth +
             separatorWidth *
-            (NAV_LIST.length - (NAV_LIST.indexOf(currentPath) + 1)))
+              (NAV_LIST.length - (NAV_LIST.indexOf(currentPath) + 1)))
         );
       case "posts":
         return (
           totalNavListWidth -
           (aboutLinkWidth +
             separatorWidth *
-            (NAV_LIST.length - (NAV_LIST.indexOf(currentPath) + 1)))
+              (NAV_LIST.length - (NAV_LIST.indexOf(currentPath) + 1)))
         );
       case "about":
         return totalNavListWidth;
@@ -120,7 +120,8 @@ export const BaseHeader: FC<Props> = ({ currentPath }) => {
         </Link>
         <nav className={styles["header__nav"]}>
           <div className={styles["nav__arrow-outer"]}>
-            <span
+            <button
+              aria-label="ナビゲーションを開く"
               className={clsx(
                 styles["nav__arrow"],
                 isClose && styles["nav__arrow--close"]
@@ -128,7 +129,7 @@ export const BaseHeader: FC<Props> = ({ currentPath }) => {
               onClick={() => setIsClose(!isClose)}
             >
               <Image src="/arrow.svg" width="10" height="20" alt="" />
-            </span>
+            </button>
           </div>
           <div
             className={styles["nav__list-outer"]}
@@ -163,7 +164,11 @@ export const BaseHeader: FC<Props> = ({ currentPath }) => {
                   home
                 </Link>
               </li>
-              <li className={styles["nav__item-separator"]} ref={separatorRef}>
+              <li
+                aria-hidden="true"
+                className={styles["nav__item-separator"]}
+                ref={separatorRef}
+              >
                 /
               </li>
               <li className={styles["nav__item"]}>
@@ -182,7 +187,9 @@ export const BaseHeader: FC<Props> = ({ currentPath }) => {
                   posts
                 </Link>
               </li>
-              <li className={styles["nav__item-separator"]}>/</li>
+              <li aria-hidden="true" className={styles["nav__item-separator"]}>
+                /
+              </li>
               <li className={styles["nav__item"]}>
                 <Link
                   href="about"

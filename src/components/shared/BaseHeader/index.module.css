@@ -53,6 +53,9 @@
 .nav__arrow {
   padding: 4px 8px;
   display: block;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
   transition: transform 0.25s cubic-bezier(0.39, -0.98, 0.62, 1.86);
   transform: rotate(180deg);
   border-radius: 4px;
@@ -113,5 +116,9 @@
 @media screen and (min-width: 768px) {
   .nav__arrow:hover {
     background-color: rgb(var(--color-bg-gray));
+  }
+
+  .nav__item a:hover {
+    text-decoration: underline;
   }
 }
