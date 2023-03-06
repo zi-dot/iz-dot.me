@@ -2,15 +2,16 @@
   width: 100%;
   display: flex;
   flex-direction: column-reverse;
+  margin-bottom: 64px;
 }
 
 .top__description-box {
+  padding-top: 24px;
   width: 100%;
 }
 
 .description-box__title {
   font-size: 2.25rem;
-  word-break: keep-all;
   font-weight: 700;
   margin-bottom: 12px;
   word-break: keep-all;
@@ -59,12 +60,99 @@
 }
 
 .top__voxel {
-  width: 100%;
-  height: 100vw;
+  width: 60%;
+  margin: 0 auto;
+  height: 60vw;
 }
 
 .main__links {
   height: 100vh;
+}
+
+.links__title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.links__description {
+  font-size: 1rem;
+  color: rgb(var(--color-typo-light));
+  font-weight: 400;
+  margin-bottom: 24px;
+}
+
+.links__tiles {
+  max-width: 390px;
+  display: grid;
+  grid-template-areas: "posts twitter" "posts github";
+  gap: min(5.38vw, 24px);
+}
+
+.tiles__posts {
+  display: block;
+  grid-area: posts;
+  width: min(56.67vw, 252px);
+  height: min(56.67vw, 252px);
+  border-radius: 8px;
+  background-color: rgb(var(--color-bg-secondary));
+  background-image: url("/post.png");
+  background-size: 44%;
+  padding: 20px;
+  background-repeat: no-repeat;
+  background-position-x: right;
+  background-position-y: bottom;
+  text-decoration: none;
+}
+
+.tiles__posts-title {
+  color: rgb(var(--color-typo-white));
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.5;
+  text-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 4px;
+}
+
+.tiles__posts-description {
+  color: rgb(var(--color-typo-white));
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.5;
+  width: 56%;
+  text-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+.tiles__twitter {
+  display: grid;
+  place-items: center;
+  grid-area: twitter;
+  width: min(25.64vw, 114px);
+  height: min(25.64vw, 114px);
+  border-radius: 8px;
+  background: linear-gradient(135.84deg, #cbdbfc 2.34%, #1da1f2 98.77%);
+}
+
+.tiles__twitter > img {
+  width: 33%;
+  height: auto;
+}
+
+.tiles__github {
+  display: grid;
+  place-items: center;
+  grid-area: github;
+  width: min(25.64vw, 114px);
+  height: min(25.64vw, 114px);
+  border-radius: 8px;
+  background: linear-gradient(135.3deg, #cbdbfc 0%, #697286 97%);
+}
+
+.tiles__github > img {
+  width: 33%;
+  height: auto;
 }
 
 @media screen and (min-width: 768px) {
@@ -99,5 +187,12 @@
 
   .top__voxel {
     height: 390px;
+  }
+
+  .tiles__posts:hover,
+  .tiles__twitter:hover,
+  .tiles__github:hover {
+    transform: scale(1.01);
+    transition: all 0.2s ease;
   }
 }
