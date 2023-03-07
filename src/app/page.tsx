@@ -11,11 +11,7 @@ export default function Home() {
     <>
       <section className={styles["main__top"]}>
         <div className={styles["top__description-box"]}>
-          <h1 className={styles["description-box__title"]}>
-            Webが
-            <wbr />
-            好きです。
-          </h1>
+          <h1 className={styles["description-box__title"]}>Webが好きです。</h1>
           <h2 className={styles["description-box__name"]}>iz_dot / zi</h2>
           <p className={styles["description-box__real-name"]}>Ryoji Kono</p>
           <p className={styles["description-box__description-hello"]}>

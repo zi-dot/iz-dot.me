@@ -7,5 +7,6 @@
 }
 
 .body {
+  height: auto;
   background-color: rgb(var(--color-bg-base));
 }

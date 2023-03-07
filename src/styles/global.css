@@ -5,6 +5,8 @@
   --color-bg-secondary-light: 238, 243, 252;
   --color-bg-gray: 244, 242, 238;
 
+  --color-bg-accent: 221, 217, 129;
+
   --color-typo-base: 45, 45, 45;
   --color-typo-light: 105, 114, 134;
   --color-typo-white: 255, 255, 255;
@@ -20,6 +22,8 @@
     --color-bg-secondary: 197, 215, 253;
     --color-bg-secondary-light: 238, 243, 252;
     --color-bg-gray: 153, 150, 145;
+
+    --color-bg-accent: 221, 217, 129;
 
     --color-typo-base: 239, 237, 242;
     --color-typo-light: 207, 203, 214;
@@ -82,4 +86,10 @@ h5,
 h6 {
   overflow-wrap: break-word;
   margin-block: 0;
+}
+
+/* global css */
+::selection {
+  background-color: rgb(var(--color-bg-accent));
+  color: rgb(var(--color-typo-white));
 }

@@ -11,7 +11,7 @@
 }
 
 .description-box__title {
-  font-size: 2.25rem;
+  font-size: 2rem;
   font-weight: 700;
   margin-bottom: 12px;
   word-break: keep-all;
@@ -21,13 +21,12 @@
 .description-box__name {
   font-size: 1.75rem;
   font-weight: 700;
-  margin-bottom: 4px;
 }
 
 .description-box__real-name {
   font-size: 1rem;
   color: rgb(var(--color-typo-light));
-  margin-bottom: 16px;
+  margin-bottom: 24px;
   font-weight: 400;
 }
 
@@ -48,6 +47,9 @@
   color: rgb(var(--color-typo-light));
   font-weight: 400;
   margin-bottom: 8px;
+
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
 .description-box__read-more {
@@ -196,11 +198,16 @@
     margin-bottom: 20px;
   }
 
+  .description-box__name {
+    margin-bottom: 4px;
+  }
+
   .description-box__real-name {
     margin-bottom: 20px;
   }
 
   .description-box__description-hello {
+    line-height: 1.5;
     margin-bottom: 20px;
   }
 
