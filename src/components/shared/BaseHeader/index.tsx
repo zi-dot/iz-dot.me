@@ -49,7 +49,7 @@ export const BaseHeader: FC<Props> = ({ currentPath }) => {
   }, [homeLinkRef, postsLinkRef, aboutLinkRef, separatorRef]);
 
   const navListWidth = () => {
-    const margin = 4;
+    const margin = 8;
     switch (currentPath) {
       case "home":
         return (
@@ -88,14 +88,14 @@ export const BaseHeader: FC<Props> = ({ currentPath }) => {
           (postLinkWidth +
             aboutLinkWidth +
             separatorWidth *
-              (NAV_LIST.length - (NAV_LIST.indexOf(currentPath) + 1)))
+            (NAV_LIST.length - (NAV_LIST.indexOf(currentPath) + 1)))
         );
       case "posts":
         return (
           totalNavListWidth -
           (aboutLinkWidth +
             separatorWidth *
-              (NAV_LIST.length - (NAV_LIST.indexOf(currentPath) + 1)))
+            (NAV_LIST.length - (NAV_LIST.indexOf(currentPath) + 1)))
         );
       case "about":
         return totalNavListWidth;
@@ -128,7 +128,28 @@ export const BaseHeader: FC<Props> = ({ currentPath }) => {
               )}
               onClick={() => setIsClose(!isClose)}
             >
-              <Image src="/arrow.svg" width="10" height="20" alt="" />
+              <svg
+                width="10"
+                height="20"
+                viewBox="0 0 6 8"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <line
+                  x1="4.87699"
+                  y1="0.353553"
+                  x2="1.35348"
+                  y2="3.87707"
+                  stroke="currentColor"
+                />
+                <line
+                  x1="4.61031"
+                  y1="6.96012"
+                  x2="1.0868"
+                  y2="3.43661"
+                  stroke="currentColor"
+                />
+              </svg>
             </button>
           </div>
           <div
@@ -144,7 +165,7 @@ export const BaseHeader: FC<Props> = ({ currentPath }) => {
               role="list"
               style={{
                 transform: isClose
-                  ? `translateX(-${calcTranslateX() + 2}px)`
+                  ? `translateX(-${calcTranslateX() + 4}px)`
                   : `translateX(-${totalNavListWidth}px)`,
               }}
             >

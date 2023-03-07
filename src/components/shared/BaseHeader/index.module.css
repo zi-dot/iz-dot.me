@@ -46,11 +46,13 @@
 }
 
 .nav__arrow-outer {
+  color: var(--color-typo-base);
   margin-right: 12px;
   cursor: pointer;
 }
 
 .nav__arrow {
+  color: rgb(var(--color-typo-base));
   padding: 4px 8px;
   display: block;
   border: none;
@@ -110,7 +112,7 @@
 }
 
 .current {
-  font-weight: bold;
+  font-weight: 700;
 }
 
 @media screen and (min-width: 768px) {
