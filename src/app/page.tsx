@@ -21,14 +21,13 @@ export default function Home() {
             variant="p"
             className={styles["description-box__description-hello"]}
           >
-            はじめまして、Webフロントエンド開発者のziです。ReactやNext.jsを
-            使ってWebサイトを作っています。
+            はじめまして、Webフロントエンド開発者のziです。ReactやNext.jsを使ってWebサイトを作っています。
           </Typography>
           <Typography
             variant="p"
             className={styles["description-box__description-goal"]}
           >
-            人にとって使いやすくワクワクするUIやグラフィックを設計・実装を心掛けています。まだ道すがらですが、日々ユーザーのための使いやすさを考え開発しています。
+            人にとって使いやすくワクワクするUIやグラフィックの設計・実装することを心掛けています。まだ道すがらですが、日々ユーザーのための使いやすさを考え開発しています。
           </Typography>
           <Link href="/about" className={styles["description-box__read-more"]}>
             more{" "}
