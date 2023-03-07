@@ -1,4 +1,5 @@
 import styles from "./index.module.css";
+
 export const BaseFooter = () => {
   return (
     <footer className={styles.footer}>

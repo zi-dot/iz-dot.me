@@ -238,6 +238,7 @@ export const BaseHeader: FC<Props> = ({ currentPath }) => {
 export const BaseHeaderClient: FC = () => {
   const pathname = usePathname();
   const currentPath = useMemo(() => {
+    if (pathname === null) return undefined;
     const path = pathname.replace(/\?.*/g, "");
     if (path === "/") return "home";
     if (path.startsWith("/posts")) return "posts";

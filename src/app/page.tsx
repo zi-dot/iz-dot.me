@@ -5,6 +5,7 @@ import NoSsr from "@/components/shared/NoSsr";
 import { DynamicVoxel } from "@/components/3d/VoxelTaiwan/dynamic";
 import Link from "next/link";
 import Image from "next/image";
+import { Typography } from "@/components/shared/Typography";
 
 export default function Home() {
   return (
@@ -16,60 +17,19 @@ export default function Home() {
           <p className={styles["description-box__real-name"]}>
             @iz_dot / Ryoji Kono
           </p>
-          <p className={styles["description-box__description-hello"]}>
-            はじめまして、
-            <wbr />
-            Webフロントエンド開発者の
-            <wbr />
-            ziです。
-            <wbr />
-            Reactや
-            <wbr />
-            Next.jsを
-            <wbr />
-            使って
-            <wbr />
-            Webサイトを
-            <wbr />
-            作っています。
-          </p>
-          <p className={styles["description-box__description-goal"]}>
-            人に
-            <wbr />
-            とって
-            <wbr />
-            使いやすく
-            <wbr />
-            ワクワクする
-            <wbr />
-            UIや
-            <wbr />
-            グラフィックを
-            <wbr />
-            設計・
-            <wbr />
-            実装できる
-            <wbr />
-            人に
-            <wbr />
-            憧れています。
-            <wbr />
-            まだ
-            <wbr />
-            道すがら
-            <wbr />
-            ですが、
-            <wbr />
-            日々
-            <wbr />
-            目標に
-            <wbr />
-            到達
-            <wbr />
-            できるよう
-            <wbr />
-            勤しんでいます。
-          </p>
+          <Typography
+            variant="p"
+            className={styles["description-box__description-hello"]}
+          >
+            はじめまして、Webフロントエンド開発者のziです。ReactやNext.jsを
+            使ってWebサイトを作っています。
+          </Typography>
+          <Typography
+            variant="p"
+            className={styles["description-box__description-goal"]}
+          >
+            人にとって使いやすくワクワクするUIやグラフィックを設計・実装を心掛けています。まだ道すがらですが、日々ユーザーのための使いやすさを考え開発しています。
+          </Typography>
           <Link href="/about" className={styles["description-box__read-more"]}>
             more{" "}
             <span className={styles["description-box__read-more-arrow"]}>
