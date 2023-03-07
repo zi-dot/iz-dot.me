@@ -5,7 +5,7 @@ import NoSsr from "@/components/shared/NoSsr";
 import { DynamicVoxel } from "@/components/3d/VoxelTaiwan/dynamic";
 import Link from "next/link";
 import Image from "next/image";
-// import { Typography } from "@/components/shared/Typography";
+import { Typography } from "@/components/shared/Typography";
 
 export default function Home() {
   return (
@@ -17,19 +17,19 @@ export default function Home() {
           <p className={styles["description-box__real-name"]}>
             @iz_dot / Ryoji Kono
           </p>
-          <p
-            // variant="p"
+          <Typography
+            variant="p"
             className={styles["description-box__description-hello"]}
           >
             はじめまして、Webフロントエンド開発者のziです。ReactやNext.jsを
             使ってWebサイトを作っています。
-          </p>
-          <p
-            // variant="p"
+          </Typography>
+          <Typography
+            variant="p"
             className={styles["description-box__description-goal"]}
           >
             人にとって使いやすくワクワクするUIやグラフィックを設計・実装を心掛けています。まだ道すがらですが、日々ユーザーのための使いやすさを考え開発しています。
-          </p>
+          </Typography>
           <Link href="/about" className={styles["description-box__read-more"]}>
             more{" "}
             <span className={styles["description-box__read-more-arrow"]}>
