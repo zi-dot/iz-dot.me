@@ -71,7 +71,7 @@ export default function Home() {
           <Link href="/about" className={styles["description-box__read-more"]}>
             more{" "}
             <span className={styles["description-box__read-more-arrow"]}>
-              →
+              -&gt;
             </span>
           </Link>
         </div>
