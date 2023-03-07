@@ -68,6 +68,7 @@
   width: 60%;
   margin: 0 auto;
   height: 60vw;
+  cursor: pointer;
 }
 
 .main__links {
@@ -100,14 +101,27 @@
   width: min(56.67vw, 252px);
   height: min(56.67vw, 252px);
   border-radius: 8px;
-  background-color: rgb(var(--color-bg-secondary));
-  background-image: url("/post.png");
-  background-size: 44%;
   padding: 20px;
+  background-image: url("/light-blue-tile.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  text-decoration: none;
+  position: relative;
+}
+
+.tiles__posts::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background-repeat: no-repeat;
   background-position-x: right;
   background-position-y: bottom;
-  text-decoration: none;
+
+  background-image: url("/post.png");
+  background-size: 44%;
 }
 
 .tiles__posts-title {
@@ -137,7 +151,9 @@
   width: min(25.64vw, 114px);
   height: min(25.64vw, 114px);
   border-radius: 8px;
-  background: linear-gradient(135.84deg, #cbdbfc 2.34%, #1da1f2 98.77%);
+  background-image: url("/twitter-tile.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
 }
 
 .tiles__twitter > img {
@@ -152,7 +168,9 @@
   width: min(25.64vw, 114px);
   height: min(25.64vw, 114px);
   border-radius: 8px;
-  background: linear-gradient(135.3deg, #cbdbfc 0%, #697286 97%);
+  background-image: url("/github-tile.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
 }
 
 .tiles__github > img {
