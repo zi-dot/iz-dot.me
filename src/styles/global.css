@@ -1,5 +1,5 @@
 /* css vars */
-:root[data-theme="light"] {
+:root {
   --color-bg-base: 255, 254, 252;
   --color-bg-secondary: 197, 215, 253;
   --color-bg-secondary-light: 238, 243, 252;
@@ -14,19 +14,21 @@
   --font-family-base: var(--font-inter), sans-serif;
 }
 
-:root[data-theme="dark"] {
-  --color-bg-base: 38, 43, 54;
-  --color-bg-secondary: 197, 215, 253;
-  --color-bg-secondary-light: 238, 243, 252;
-  --color-bg-gray: 153, 150, 145;
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg-base: 38, 43, 54;
+    --color-bg-secondary: 197, 215, 253;
+    --color-bg-secondary-light: 238, 243, 252;
+    --color-bg-gray: 153, 150, 145;
 
-  --color-typo-base: 239, 237, 242;
-  --color-typo-light: 207, 203, 214;
-  --color-typo-white: 255, 255, 255;
+    --color-typo-base: 239, 237, 242;
+    --color-typo-light: 207, 203, 214;
+    --color-typo-white: 255, 255, 255;
 
-  --sticky-header-z-index: 10;
+    --sticky-header-z-index: 10;
 
-  --font-family-base: var(--font-inter), sans-serif;
+    --font-family-base: var(--font-inter), sans-serif;
+  }
 }
 
 /* reset css */
