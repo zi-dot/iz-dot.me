@@ -3,7 +3,7 @@ export const BaseFooter = () => {
   return (
     <footer className={styles.footer}>
       <p className={styles["footer-copy-right"]}>
-        &copy; 2023 iz_dot / zi. All Rights Reserved.
+        &copy; 2023 zi @iz_dot. All Rights Reserved.
       </p>
     </footer>
   );

@@ -88,14 +88,14 @@ export const BaseHeader: FC<Props> = ({ currentPath }) => {
           (postLinkWidth +
             aboutLinkWidth +
             separatorWidth *
-            (NAV_LIST.length - (NAV_LIST.indexOf(currentPath) + 1)))
+              (NAV_LIST.length - (NAV_LIST.indexOf(currentPath) + 1)))
         );
       case "posts":
         return (
           totalNavListWidth -
           (aboutLinkWidth +
             separatorWidth *
-            (NAV_LIST.length - (NAV_LIST.indexOf(currentPath) + 1)))
+              (NAV_LIST.length - (NAV_LIST.indexOf(currentPath) + 1)))
         );
       case "about":
         return totalNavListWidth;
@@ -116,7 +116,7 @@ export const BaseHeader: FC<Props> = ({ currentPath }) => {
             className={styles["logo__avator-icon"]}
             quality="100"
           />
-          <p className={styles["logo__name"]}>iz_dot</p>
+          <p className={styles["logo__name"]}>zi</p>
         </Link>
         <nav className={styles["header__nav"]}>
           <div className={styles["nav__arrow-outer"]}>

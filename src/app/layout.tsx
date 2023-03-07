@@ -5,8 +5,8 @@ import { BaseHeaderClient } from "@/components/shared/BaseHeader";
 import { BaseFooter } from "@/components/shared/BaseFooter";
 
 export const metadata = {
-  title: "iz_dot / zi",
-  description: "Personal page of iz_dot / zi",
+  title: "zi @iz_dot",
+  description: "Personal page of zi @iz_dot",
   icons: {
     icon: "/favicon.ico",
   },

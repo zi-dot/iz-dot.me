@@ -12,24 +12,26 @@ export default function Home() {
       <section className={styles["main__top"]}>
         <div className={styles["top__description-box"]}>
           <h1 className={styles["description-box__title"]}>Webが好きです。</h1>
-          <h2 className={styles["description-box__name"]}>iz_dot / zi</h2>
-          <p className={styles["description-box__real-name"]}>Ryoji Kono</p>
+          <h2 className={styles["description-box__name"]}>zi</h2>
+          <p className={styles["description-box__real-name"]}>
+            @iz_dot / Ryoji Kono
+          </p>
           <p className={styles["description-box__description-hello"]}>
             はじめまして、
             <wbr />
             Webフロントエンド開発者の
             <wbr />
-            iz_dotです。
+            ziです。
             <wbr />
-            たまに
+            Reactや
             <wbr />
-            ziと
+            Next.jsを
             <wbr />
-            いう
+            使って
             <wbr />
-            名前も
+            Webサイトを
             <wbr />
-            使ってます。
+            作っています。
           </p>
           <p className={styles["description-box__description-goal"]}>
             人に
