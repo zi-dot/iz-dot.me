@@ -5,6 +5,12 @@ export const DynamicVoxel = dynamic(
   () => import("./index").then((mod) => mod.VoxelTaiwan),
   {
     ssr: false,
-    loading: () => <p style={{ width: "100%" }}>loading...</p>,
+    loading: () => (
+      <span
+        style={{ width: "100%" }}
+        aria-busy="true"
+        aria-label="ローディング中"
+      ></span>
+    ),
   }
 );
