@@ -18,24 +18,29 @@
   overflow-wrap: break-word;
 }
 
+.description-box__name-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
 .description-box__name {
   font-size: 1.75rem;
   font-weight: 700;
 }
 
 .description-box__real-name {
-  font-size: 1rem;
+  font-size: 1.25rem;
   color: rgb(var(--color-typo-light));
-  margin-bottom: 24px;
   font-weight: 400;
 }
 
 .description-box__description-hello {
   font-size: 1rem;
   line-height: 1.5;
-  color: rgb(var(--color-typo-light));
   font-weight: 400;
-  margin-bottom: 16px;
+  margin-bottom: 8px;
 
   word-break: keep-all;
   overflow-wrap: break-word;
@@ -44,9 +49,8 @@
 .description-box__description-goal {
   font-size: 1rem;
   line-height: 1.5;
-  color: rgb(var(--color-typo-light));
   font-weight: 400;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
 
   word-break: keep-all;
   overflow-wrap: break-word;
@@ -54,7 +58,6 @@
 
 .description-box__read-more {
   font-size: 1rem;
-  color: rgb(var(--color-typo-light));
   font-weight: 400;
   line-height: 1.5;
   text-decoration: none;
@@ -86,7 +89,6 @@
 
 .links__description {
   font-size: 1rem;
-  color: rgb(var(--color-typo-light));
   font-weight: 400;
   margin-bottom: 24px;
 }
@@ -132,7 +134,7 @@
   font-size: 1.5rem;
   font-weight: 600;
   line-height: 1.5;
-  text-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
   margin-bottom: 4px;
 }
 
@@ -142,7 +144,7 @@
   font-weight: 600;
   line-height: 1.5;
   width: 56%;
-  text-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
   word-break: keep-all;
   overflow-wrap: break-word;
 }
@@ -199,17 +201,8 @@
     margin-bottom: 20px;
   }
 
-  .description-box__name {
-    margin-bottom: 4px;
-  }
-
-  .description-box__real-name {
-    margin-bottom: 20px;
-  }
-
   .description-box__description-hello {
     line-height: 1.5;
-    margin-bottom: 20px;
   }
 
   .description-box__read-more:hover {
@@ -218,10 +211,6 @@
   }
   .description-box__read-more:hover .description-box__read-more-arrow {
     margin-left: 4px;
-  }
-
-  .description-box__description-goal {
-    margin-bottom: 4px;
   }
 
   .top__voxel {
