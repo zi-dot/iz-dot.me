@@ -1,5 +1,5 @@
 import { getBlogs } from "@/lib/cmsClient";
-import { loadDefaultJapaneseParser } from "budoux";
+// import { loadDefaultJapaneseParser } from "budoux";
 import style from "./page.module.css";
 
 export const metadata = {
