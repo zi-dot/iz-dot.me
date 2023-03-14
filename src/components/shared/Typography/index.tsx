@@ -1,10 +1,23 @@
 import clsx from "clsx";
-import { FC, createElement } from "react";
+import { FC, createElement, Fragment } from "react";
 import styles from "./index.module.css";
 
 type Props = {
   children: string;
-  variant: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "span" | "div";
+  variant?:
+    | "h1"
+    | "h2"
+    | "h3"
+    | "h4"
+    | "h5"
+    | "h6"
+    | "p"
+    | "span"
+    | "div"
+    | "li"
+    | "code"
+    | "s"
+    | "bold";
   className?: string;
 };
 
@@ -13,10 +26,29 @@ export const Typography = (async ({
   variant,
   className,
 }: Props): Promise<JSX.Element> => {
-  const data = await fetch(`${process.env.URL}/api/texts?text=${children}`, {
+  const data = await fetch(`${process.env.URL}/api/texts`, {
+    method: "POST",
     cache: "force-cache",
+    body: JSON.stringify({
+      text: children,
+    }),
   });
   const text = (await data.json()) as { text: string[] };
+
+  if (!variant) {
+    return createElement(
+      Fragment,
+      undefined,
+      <>
+        {text.text.map((text) => (
+          <>
+            {text}
+            <wbr />
+          </>
+        ))}
+      </>
+    );
+  }
   return createElement(
     variant,
     { className: clsx(styles.typography, className) },

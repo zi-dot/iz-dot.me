@@ -15,29 +15,28 @@ export type EyeCatch = {
 export type Blog = {
   id: string;
   title: string;
-  content: {
-    contents: (
-      | RichTextEditorText
-      | RichTextEditorBlock
-      | RichTextEditorTextBlock
-      | RichTextEditorImage
-    )[];
-  };
+  content: string;
+  // content: {
+  //   contents: (Text | Block | TextBlock | Image | Embed)[];
+  // };
   eyecatch: EyeCatch;
   category: Category[];
 } & MicroCMSDate;
 
 export type RichTextEditorTextAttributes = {
-  script?: "sub" | "super";
+  // script?: "sub" | "super";
   blockquote?: boolean;
-  size?: "small" | "large" | "huge";
+  // size?: "small" | "large" | "huge";
   link?: string;
   target?: "_blank";
   rel?: "noopener noreferrer";
+  strike?: boolean;
+  bold?: boolean;
 };
 
 export type RichTextEditorBlockAttributes = {
   list?: "bullet" | "ordered";
+  "code-block"?: boolean;
   header?: 1 | 2 | 3 | 4 | 5;
 };
 
@@ -49,26 +48,31 @@ export type RitchTextEditorImageAttributes = {
   alt: string | null;
 };
 
-export type RichTextEditorText = {
+export type Text = {
   type: "text";
   value: string;
   attributes?: RichTextEditorTextAttributes;
 };
 
-export type RichTextEditorBlock = {
+export type Block = {
   type: "block";
-  value: RichTextEditorText[];
+  value: Text[];
   attributes?: RichTextEditorBlockAttributes;
 };
 
-export type RichTextEditorTextBlock = {
+export type TextBlock = {
   type: "textBlock";
-  value: RichTextEditorText[];
-  attributes?: RichTextEditorTextAttributes;
+  value: Text[];
 };
 
-export type RichTextEditorImage = {
+export type Image = {
   type: "image";
   value: string;
   attributes: RitchTextEditorImageAttributes;
+};
+
+export type Embed = {
+  type: "embed";
+  value: string;
+  attributes: {};
 };

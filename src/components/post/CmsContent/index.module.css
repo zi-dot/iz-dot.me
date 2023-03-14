@@ -1,0 +1,47 @@
+.article h2 {
+  font-size: 1.5rem;
+  line-height: 1.4;
+  margin-top: 3rem;
+  font-weight: 700;
+}
+
+.article h3 {
+  font-size: 1.3rem;
+  line-height: 1.4;
+  margin-top: 3rem;
+  font-weight: 700;
+}
+
+.article h4 {
+  font-size: 1.1rem;
+  line-height: 1.4;
+  margin-top: 3rem;
+  font-weight: 700;
+}
+
+.article h5 {
+  /* h5 is not used */
+}
+
+.article ol {
+  margin: 1.5rem 0;
+  line-height: 1.7;
+}
+
+.article ul {
+  margin: 1.5rem 0;
+  line-height: 1.7;
+}
+
+.article li {
+  margin: 1rem 0;
+}
+
+.article code {
+  font-family: monospace;
+  font-size: 1.1rem;
+  background-color: #f5f5f5;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  vertical-align: 0.08em;
+}

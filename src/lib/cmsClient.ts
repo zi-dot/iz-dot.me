@@ -18,9 +18,7 @@ export const client = createClient({
   customFetch: (url, options) => {
     return fetch(url, {
       ...options,
-      next: {
-        revalidate: 60 * 60,
-      },
+      cache: "force-cache",
     });
   },
 });
@@ -37,7 +35,7 @@ export const getBlog = async (slug: string) => {
     const blog = await client.getListDetail<Blog>({
       endpoint: "blogs",
       contentId: slug,
-      queries: { richEditorFormat: "object" },
+      // queries: { richEditorFormat: "object" },
     });
     return blog;
   } catch (e) {

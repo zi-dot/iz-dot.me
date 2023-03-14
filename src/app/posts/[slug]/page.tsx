@@ -4,8 +4,6 @@ import { notFound } from "next/navigation";
 export async function generateStaticParams() {
   const entries = await getBlogs();
 
-  console.log(entries.contents.map((content) => ({ slug: content.id })));
-
   return entries.contents.map((entry) => ({
     slug: entry.id,
   }));
@@ -19,13 +17,38 @@ type Props = {
   params: Params;
 };
 
-const Blog = async ({ params: { slug } }: Props) => {
-  const blog = await getBlog(slug);
-  if (blog === null) {
-    notFound();
-  }
+const getPost = async (slug: string) => {
+  const post = await getBlog(slug);
+  if (post === null) return null;
 
-  return <div>{slug}</div>;
+  const r = await Promise.all(
+    post.content.split(">").map(async (content) => {
+      const r = await Promise.all(
+        content.split("<").map(async (content, i) => {
+          if (i > 0) return content;
+          const data = await fetch(`${process.env.URL}/api/texts`, {
+            method: "POST",
+            cache: "force-cache",
+            body: JSON.stringify({
+              text: content,
+            }),
+          });
+          const text = (await data.json()) as { text: string[] };
+          return text.text.join("<wbr />");
+        })
+      );
+      return r.join("<");
+    })
+  );
+  const content = r.join(">");
+
+  return { ...post, content };
+};
+
+const Blog = async ({ params: { slug } }: Props) => {
+  const post = await getPost(slug);
+  if (!post) return notFound();
+  return <div dangerouslySetInnerHTML={{ __html: post.content }}></div>;
 };
 
 export default Blog;

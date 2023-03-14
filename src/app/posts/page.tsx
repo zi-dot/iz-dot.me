@@ -1,4 +1,5 @@
 import { getBlogs } from "@/lib/cmsClient";
+import { loadDefaultJapaneseParser } from "budoux";
 import style from "./page.module.css";
 
 export const metadata = {
@@ -8,18 +9,13 @@ export const metadata = {
 
 const getPosts = async () => {
   const entries = await getBlogs();
-  console.log(
-    "entriesInfo: POSTS PAGE",
-    entries.contents.map((content) => {
-      return content.id;
-    })
-  );
-
   return entries;
 };
 
 const Posts = async () => {
   const entriesInfo = await getPosts();
+  // const parser = loadDefaultJapaneseParser();
+  // console.log(parser.parse("こんにちは"));
 
   return (
     <div className={style.box}>
