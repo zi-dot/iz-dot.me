@@ -53,17 +53,17 @@ export const BaseHeader: FC<Props> = ({ currentPath }) => {
     switch (currentPath) {
       case "home":
         return (
-          Math.ceil(homeLinkRef.current?.getBoundingClientRect().width ?? 45) +
+          Math.ceil(homeLinkRef.current?.getBoundingClientRect().width ?? 44) +
           margin
         );
       case "posts":
         return (
-          Math.ceil(postsLinkRef.current?.getBoundingClientRect().width ?? 44) +
+          Math.ceil(postsLinkRef.current?.getBoundingClientRect().width ?? 45) +
           margin
         );
       case "about":
         return (
-          Math.ceil(aboutLinkRef.current?.getBoundingClientRect().width ?? 45) +
+          Math.ceil(aboutLinkRef.current?.getBoundingClientRect().width ?? 46) +
           margin
         );
       case undefined:
@@ -88,14 +88,14 @@ export const BaseHeader: FC<Props> = ({ currentPath }) => {
           (postLinkWidth +
             aboutLinkWidth +
             separatorWidth *
-              (NAV_LIST.length - (NAV_LIST.indexOf(currentPath) + 1)))
+            (NAV_LIST.length - (NAV_LIST.indexOf(currentPath) + 1)))
         );
       case "posts":
         return (
           totalNavListWidth -
           (aboutLinkWidth +
             separatorWidth *
-              (NAV_LIST.length - (NAV_LIST.indexOf(currentPath) + 1)))
+            (NAV_LIST.length - (NAV_LIST.indexOf(currentPath) + 1)))
         );
       case "about":
         return totalNavListWidth;

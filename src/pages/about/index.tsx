@@ -1,3 +1,4 @@
+import { BaseHead } from "@/components/shared/BaseHead";
 import style from "./index.module.css";
 
 export const metadata = {
@@ -7,10 +8,13 @@ export const metadata = {
 
 const About = () => {
   return (
-    <div className={style.box}>
-      <h1 style={{ marginBottom: "16px" }}>About</h1>
-      <p> 🚧 Under construction </p>
-    </div>
+    <>
+      <BaseHead title="about | zi / @iz_dot" description="zi's posts" />
+      <div className={style.box}>
+        <h1 style={{ marginBottom: "16px" }}>About</h1>
+        <p> 🚧 Under construction </p>
+      </div>
+    </>
   );
 };
 

@@ -15,6 +15,7 @@ export type EyeCatch = {
 export type Blog = {
   id: string;
   title: string;
+  description?: string;
   content: string;
   eyecatch: EyeCatch;
   category: Category[];

@@ -1,3 +1,4 @@
+import { BaseHead } from "@/components/shared/BaseHead";
 import { getBlog, getBlogs } from "@/lib/cmsClient";
 import { Blog } from "@/types/cms";
 import { loadDefaultJapaneseParser } from "budoux";
@@ -47,10 +48,17 @@ export const getStaticProps: GetStaticProps<{
 const Blog = ({ post }: InferGetStaticPropsType<typeof getStaticProps>) => {
   if (post === null) return null;
   return (
-    <div
-      className={styles.cms}
-      dangerouslySetInnerHTML={{ __html: post.content }}
-    ></div>
+    <>
+      <BaseHead
+        title={post.title}
+        description={post.description ?? ""}
+        ogImage={post.eyecatch.url}
+      />
+      <article
+        className={styles.cms}
+        dangerouslySetInnerHTML={{ __html: post.content }}
+      ></article>
+    </>
   );
 };
 
