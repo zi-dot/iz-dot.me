@@ -5,19 +5,19 @@ import styles from "./index.module.css";
 type Props = {
   children: string;
   variant?:
-    | "h1"
-    | "h2"
-    | "h3"
-    | "h4"
-    | "h5"
-    | "h6"
-    | "p"
-    | "span"
-    | "div"
-    | "li"
-    | "code"
-    | "s"
-    | "bold";
+  | "h1"
+  | "h2"
+  | "h3"
+  | "h4"
+  | "h5"
+  | "h6"
+  | "p"
+  | "span"
+  | "div"
+  | "li"
+  | "code"
+  | "s"
+  | "bold";
   className?: string;
 };
 
@@ -26,12 +26,12 @@ export const Typography = (async ({
   variant,
   className,
 }: Props): Promise<JSX.Element> => {
-  const data = await fetch(`${process.env.URL}/api/texts?text=${children}`, {
-    // method: "POST",
+  const data = await fetch(`${process.env.URL}/api/texts`, {
+    method: "POST",
     cache: "force-cache",
-    // body: JSON.stringify({
-    //   text: children,
-    // }),
+    body: JSON.stringify({
+      text: children,
+    }),
   });
   const text = (await data.json()) as { text: string[] };
 

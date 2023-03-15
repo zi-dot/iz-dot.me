@@ -26,16 +26,13 @@ const getPost = async (slug: string) => {
       const r = await Promise.all(
         content.split("<").map(async (content, i) => {
           if (i > 0) return content;
-          const data = await fetch(
-            `${process.env.URL}/api/texts?text=${content}`,
-            {
-              // method: "POST",
-              cache: "force-cache",
-              // body: JSON.stringify({
-              //   text: content,
-              // }),
-            }
-          );
+          const data = await fetch(`${process.env.URL}/api/texts`, {
+            method: "POST",
+            cache: "force-cache",
+            body: JSON.stringify({
+              text: content,
+            }),
+          });
           const text = (await data.json()) as { text: string[] };
           return text.text.join("<wbr />");
         })
