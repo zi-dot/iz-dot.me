@@ -1,6 +1,5 @@
-import styles from "./page.module.css";
+import styles from "./index.module.css";
 
-import "@/styles/global.css";
 import NoSsr from "@/components/shared/NoSsr";
 import { DynamicVoxel } from "@/components/3d/VoxelTaiwan/dynamic";
 import Link from "next/link";

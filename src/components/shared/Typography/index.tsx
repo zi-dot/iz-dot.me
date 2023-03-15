@@ -1,46 +1,37 @@
 import clsx from "clsx";
-import { FC, createElement, Fragment } from "react";
+import { createElement, Fragment } from "react";
+import { loadDefaultJapaneseParser } from "budoux";
 import styles from "./index.module.css";
 
 type Props = {
   children: string;
   variant?:
-  | "h1"
-  | "h2"
-  | "h3"
-  | "h4"
-  | "h5"
-  | "h6"
-  | "p"
-  | "span"
-  | "div"
-  | "li"
-  | "code"
-  | "s"
-  | "bold";
+    | "h1"
+    | "h2"
+    | "h3"
+    | "h4"
+    | "h5"
+    | "h6"
+    | "p"
+    | "span"
+    | "div"
+    | "li"
+    | "code"
+    | "s"
+    | "bold";
   className?: string;
 };
 
-export const Typography = (async ({
-  children,
-  variant,
-  className,
-}: Props): Promise<JSX.Element> => {
-  const data = await fetch(`${process.env.URL}/api/texts`, {
-    method: "POST",
-    cache: "force-cache",
-    body: JSON.stringify({
-      text: children,
-    }),
-  });
-  const text = (await data.json()) as { text: string[] };
+export const Typography = ({ children, variant, className }: Props) => {
+  const parser = loadDefaultJapaneseParser();
+  const text = parser.parse(children);
 
   if (!variant) {
     return createElement(
       Fragment,
       undefined,
       <>
-        {text.text.map((text) => (
+        {text.map((text) => (
           <>
             {text}
             <wbr />
@@ -53,12 +44,12 @@ export const Typography = (async ({
     variant,
     { className: clsx(styles.typography, className) },
     <>
-      {text.text.map((text) => (
-        <>
+      {text.map((text, i) => (
+        <Fragment key={`${text}__${i}`}>
           {text}
           <wbr />
-        </>
+        </Fragment>
       ))}
     </>
   );
-}) as unknown as FC<Props>;
+};

@@ -194,7 +194,7 @@ export const BaseHeader: FC<Props> = ({ currentPath }) => {
               </li>
               <li className={styles["nav__item"]}>
                 <Link
-                  href="posts"
+                  href="/posts"
                   className={clsx(
                     styles["nav__link"],
                     currentPath === "posts" && styles.current
@@ -213,7 +213,7 @@ export const BaseHeader: FC<Props> = ({ currentPath }) => {
               </li>
               <li className={styles["nav__item"]}>
                 <Link
-                  href="about"
+                  href="/about"
                   className={clsx(
                     styles["nav__link"],
                     currentPath === "about" && styles.current

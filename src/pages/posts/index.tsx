@@ -1,19 +1,24 @@
 import { getBlogs } from "@/lib/cmsClient";
+import { Blog } from "@/types/cms";
+import { MicroCMSListResponse } from "microcms-js-sdk";
+import { GetStaticProps, InferGetStaticPropsType } from "next";
 // import { loadDefaultJapaneseParser } from "budoux";
-import style from "./page.module.css";
+import style from "./index.module.css";
 
-export const metadata = {
-  title: "Posts",
-  description: "Posts page",
-};
+type Entries = MicroCMSListResponse<Blog>;
 
-const getPosts = async () => {
+export const getStaticProps: GetStaticProps<{
+  entries: Entries;
+}> = async () => {
   const entries = await getBlogs();
-  return entries;
+  return {
+    props: {
+      entries,
+    },
+  };
 };
 
-const Posts = async () => {
-  const entriesInfo = await getPosts();
+const Posts = ({ entries }: InferGetStaticPropsType<typeof getStaticProps>) => {
   // const parser = loadDefaultJapaneseParser();
   // console.log(parser.parse("こんにちは"));
 
@@ -22,7 +27,7 @@ const Posts = async () => {
       <h1 style={{ marginBottom: "16px" }}>Posts</h1>
       <p> 🚧 Under construction </p>
       <ul>
-        {entriesInfo.contents.map((content, i) => {
+        {entries.contents.map((content, i) => {
           return (
             <li key={i}>
               <a href={`/posts/${content.id}`}>{content.title}</a>

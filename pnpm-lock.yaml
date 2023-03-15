@@ -23,6 +23,7 @@ specifiers:
   eslint-plugin-storybook: ^0.6.11
   framer-motion: ^10.3.0
   microcms-js-sdk: ^2.3.2
+  mini-css-extract-plugin: ^2.7.3
   next: 13.2.4
   postcss-loader: ^7.0.2
   react: 18.2.0
@@ -62,6 +63,7 @@ devDependencies:
   '@types/three': 0.149.0
   css-loader: 6.7.3
   eslint-plugin-storybook: 0.6.11_ycpbpc6yetojsgtrx3mwntkhsu
+  mini-css-extract-plugin: 2.7.3
   postcss-loader: 7.0.2
   storybook: 7.0.0-rc.3_encoding@0.1.13
   style-loader: 3.3.2
@@ -8461,6 +8463,15 @@ packages:
   /min-indent/1.0.1:
     resolution: {integrity: sha512-I9jwMn07Sy/IwOj3zVkVik2JTvgpaykDZEigL6Rx6N9LbMywwUSMtxET+7lVoDLLd3O3IXwJwvuuns8UB/HeAg==}
     engines: {node: '>=4'}
+    dev: true
+
+  /mini-css-extract-plugin/2.7.3:
+    resolution: {integrity: sha512-CD9cXeKeXLcnMw8FZdtfrRrLaM7gwCl4nKuKn2YkY2Bw5wdlB8zU2cCzw+w2zS9RFvbrufTBkMCJACNPwqQA0w==}
+    engines: {node: '>= 12.13.0'}
+    peerDependencies:
+      webpack: ^5.0.0
+    dependencies:
+      schema-utils: 4.0.0
     dev: true
 
   /minimatch/3.1.2:
