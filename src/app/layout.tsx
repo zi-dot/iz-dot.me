@@ -12,6 +12,8 @@ export const metadata = {
   },
 };
 
+export const dynamicParams = false;
+
 export default function RootLayout({
   children,
 }: {
