@@ -7,6 +7,12 @@ import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
 import { ParsedUrlQuery } from "querystring";
 
 import styles from "./index.module.css";
+import "prismjs/themes/prism.css";
+
+import { markdownToHtml } from "@/utils/markdownToHtml";
+import Link from "next/link";
+import Image from "next/image";
+import { formatDate } from "@/utils/formatDate";
 
 interface Params extends ParsedUrlQuery {
   slug: string;
@@ -32,11 +38,12 @@ export const getStaticProps: GetStaticProps<{
   if (post === null) return { props: { post } };
 
   const parser = loadDefaultJapaneseParser();
-  const content = post.content.replace(/(?<=>).*?(?=<)/g, (match) => {
+  const contentHtml = await markdownToHtml(post.content);
+  const contentHtmlWithWbr = contentHtml.replace(/(?<=>).*?(?=<)/g, (match) => {
     return parser.parse(match).join("<wbr />");
   });
 
-  post.content = content;
+  post.content = contentHtmlWithWbr;
 
   return {
     props: {
@@ -54,6 +61,24 @@ const Blog = ({ post }: InferGetStaticPropsType<typeof getStaticProps>) => {
         description={post.description ?? ""}
         ogImage={post.eyecatch.url}
       />
+      <Link href="/posts" className={styles["back-to-post"]}>
+        {"<- Back to Posts"}
+      </Link>
+      <div className={styles["title-wrapper"]}>
+        <Image
+          src={post.eyecatch.url}
+          alt=""
+          width={post.eyecatch.width}
+          height={post.eyecatch.height}
+          className={styles["title-image"]}
+        />
+        <h2 className={styles.title}>{post.title}</h2>
+        {post.publishedAt && (
+          <p className={styles["title-published-at"]}>
+            Published on {formatDate(new Date(post.publishedAt))}
+          </p>
+        )}
+      </div>
       <article
         className={styles.cms}
         dangerouslySetInnerHTML={{ __html: post.content }}

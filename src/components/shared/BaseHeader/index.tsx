@@ -88,14 +88,14 @@ export const BaseHeader: FC<Props> = ({ currentPath }) => {
           (postLinkWidth +
             aboutLinkWidth +
             separatorWidth *
-            (NAV_LIST.length - (NAV_LIST.indexOf(currentPath) + 1)))
+              (NAV_LIST.length - (NAV_LIST.indexOf(currentPath) + 1)))
         );
       case "posts":
         return (
           totalNavListWidth -
           (aboutLinkWidth +
             separatorWidth *
-            (NAV_LIST.length - (NAV_LIST.indexOf(currentPath) + 1)))
+              (NAV_LIST.length - (NAV_LIST.indexOf(currentPath) + 1)))
         );
       case "about":
         return totalNavListWidth;
@@ -178,6 +178,7 @@ export const BaseHeader: FC<Props> = ({ currentPath }) => {
                   href="/"
                   ref={homeLinkRef}
                   id={HOME_LINK_ID}
+                  tabIndex={isClose ? -1 : 0}
                   onClick={() => {
                     setIsClose(true);
                   }}
@@ -199,6 +200,7 @@ export const BaseHeader: FC<Props> = ({ currentPath }) => {
                     styles["nav__link"],
                     currentPath === "posts" && styles.current
                   )}
+                  tabIndex={isClose ? -1 : 0}
                   ref={postsLinkRef}
                   id={POSTS_LINK_ID}
                   onClick={() => {
@@ -214,6 +216,7 @@ export const BaseHeader: FC<Props> = ({ currentPath }) => {
               <li className={styles["nav__item"]}>
                 <Link
                   href="/about"
+                  tabIndex={isClose ? -1 : 0}
                   className={clsx(
                     styles["nav__link"],
                     currentPath === "about" && styles.current

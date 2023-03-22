@@ -1,8 +1,11 @@
+import { PostCard } from "@/components/posts/PostCard";
 import { BaseHead } from "@/components/shared/BaseHead";
+import { Typography } from "@/components/shared/Typography";
 import { getBlogs } from "@/lib/cmsClient";
 import { Blog } from "@/types/cms";
 import { MicroCMSListResponse } from "microcms-js-sdk";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
+import Image from "next/image";
 import style from "./index.module.css";
 
 type Entries = MicroCMSListResponse<Blog>;
@@ -22,19 +25,36 @@ const Posts = ({ entries }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
       <BaseHead title="posts | zi / @iz_dot" description="zi's posts" />
-      <div className={style.box}>
-        <h1 style={{ marginBottom: "16px" }}>Posts</h1>
-        <p> 🚧 Under construction </p>
-        <ul>
+      <section className={style.section}>
+        <header className={style.header}>
+          <Image
+            src="/post.png"
+            alt=""
+            width="70"
+            height="70"
+            className={style["post-image"]}
+          />
+          <h1 className={style["header-title"]}>Posts</h1>
+          <Typography variant="h2" className={style["header-subtitle"]}>
+            日々の考えや作ったもの置き場
+          </Typography>
+        </header>
+        <ul className={style.posts} role="list">
           {entries.contents.map((content, i) => {
             return (
-              <li key={i}>
-                <a href={`/posts/${content.id}`}>{content.title}</a>
+              <li className={style.post} key={i} role="listitem">
+                <a href={`/posts/${content.id}`}>
+                  <PostCard
+                    title={content.title}
+                    imageUrl={content.eyecatch.url}
+                    publishedAt={new Date(content.publishedAt ?? "")}
+                  />
+                </a>
               </li>
             );
           })}
         </ul>
-      </div>
+      </section>
     </>
   );
 };
