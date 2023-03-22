@@ -9,6 +9,5 @@ export const markdownToHtml = async (markdown: string) => {
     .use(html, { sanitize: false })
     .use(remarkPrism)
     .process(markdown);
-  console.log(result.toString());
   return result.toString();
 };
