@@ -53,17 +53,17 @@ export const BaseHeader: FC<Props> = ({ currentPath }) => {
     switch (currentPath) {
       case "home":
         return (
-          Math.ceil(homeLinkRef.current?.getBoundingClientRect().width ?? 45) +
+          Math.ceil(homeLinkRef.current?.getBoundingClientRect().width ?? 44) +
           margin
         );
       case "posts":
         return (
-          Math.ceil(postsLinkRef.current?.getBoundingClientRect().width ?? 44) +
+          Math.ceil(postsLinkRef.current?.getBoundingClientRect().width ?? 45) +
           margin
         );
       case "about":
         return (
-          Math.ceil(aboutLinkRef.current?.getBoundingClientRect().width ?? 45) +
+          Math.ceil(aboutLinkRef.current?.getBoundingClientRect().width ?? 46) +
           margin
         );
       case undefined:
@@ -178,6 +178,7 @@ export const BaseHeader: FC<Props> = ({ currentPath }) => {
                   href="/"
                   ref={homeLinkRef}
                   id={HOME_LINK_ID}
+                  tabIndex={isClose ? -1 : 0}
                   onClick={() => {
                     setIsClose(true);
                   }}
@@ -194,11 +195,12 @@ export const BaseHeader: FC<Props> = ({ currentPath }) => {
               </li>
               <li className={styles["nav__item"]}>
                 <Link
-                  href="posts"
+                  href="/posts"
                   className={clsx(
                     styles["nav__link"],
                     currentPath === "posts" && styles.current
                   )}
+                  tabIndex={isClose ? -1 : 0}
                   ref={postsLinkRef}
                   id={POSTS_LINK_ID}
                   onClick={() => {
@@ -213,7 +215,8 @@ export const BaseHeader: FC<Props> = ({ currentPath }) => {
               </li>
               <li className={styles["nav__item"]}>
                 <Link
-                  href="about"
+                  href="/about"
+                  tabIndex={isClose ? -1 : 0}
                   className={clsx(
                     styles["nav__link"],
                     currentPath === "about" && styles.current

@@ -1,15 +1,16 @@
-import styles from "./page.module.css";
+import styles from "./index.module.css";
 
-import "@/styles/global.css";
 import NoSsr from "@/components/shared/NoSsr";
 import { DynamicVoxel } from "@/components/3d/VoxelTaiwan/dynamic";
 import Link from "next/link";
 import Image from "next/image";
 import { Typography } from "@/components/shared/Typography";
+import { BaseHead } from "@/components/shared/BaseHead";
 
 export default function Home() {
   return (
     <>
+      <BaseHead title="zi / @iz_dot" description="zi's personal website" />
       <section className={styles["main__top"]}>
         <div className={styles["top__description-box"]}>
           <h1 className={styles["description-box__title"]}>Webが好きです。</h1>

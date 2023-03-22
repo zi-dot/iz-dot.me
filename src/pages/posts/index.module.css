@@ -1,0 +1,85 @@
+.section {
+  padding-top: 40px;
+}
+
+.header {
+  display: grid;
+  grid-template-areas:
+    "image title"
+    "image subtitle";
+  grid-template-columns: 70px 1fr;
+  grid-template-rows: 1fr auto;
+  align-items: end;
+  margin-bottom: 2.75rem;
+}
+
+.header-title {
+  grid-area: title;
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.header-subtitle {
+  grid-area: subtitle;
+  font-size: 1rem;
+  font-weight: 400;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+.post-image {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  grid-area: image;
+}
+
+.posts {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  align-items: stretch;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.post {
+  width: 100%;
+}
+
+.post a {
+  text-decoration: none;
+}
+
+@media screen and (min-width: 480px) {
+  .post {
+    width: calc(50% - (24px / 2));
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .post {
+    width: calc(33.333% - (24px * 2 / 3));
+  }
+}
+
+@media screen and (max-width: 340px) {
+  .header {
+    grid-template-columns: 84px 1fr;
+  }
+  .post-image {
+    width: 84px;
+    height: 84px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .header {
+    margin-bottom: 2.75rem;
+  }
+
+  .header-title {
+    font-size: 2.25rem;
+  }
+}

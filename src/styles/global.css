@@ -10,6 +10,7 @@
   --color-typo-base: 45, 45, 45;
   --color-typo-light: 105, 114, 134;
   --color-typo-white: 255, 255, 255;
+  --color-typo-secondary: 101, 143, 235;
 
   --sticky-header-z-index: 10;
 
@@ -20,7 +21,7 @@
   :root {
     --color-bg-base: 38, 43, 54;
     --color-bg-secondary: 197, 215, 253;
-    --color-bg-secondary-light: 238, 243, 252;
+    --color-bg-secondary-light: 60, 73, 97;
     --color-bg-gray: 153, 150, 145;
 
     --color-bg-accent: 221, 217, 129;
@@ -28,6 +29,7 @@
     --color-typo-base: 239, 237, 242;
     --color-typo-light: 207, 203, 214;
     --color-typo-white: 255, 255, 255;
+    --color-typo-secondary: 101, 143, 235;
 
     --sticky-header-z-index: 10;
 
@@ -56,6 +58,8 @@ body {
 body {
   line-height: 1.2;
   webkit-font-smoothing: antialiased;
+  height: auto;
+  background-color: rgb(var(--color-bg-base));
 }
 
 img,
