@@ -28,11 +28,18 @@
   overflow-wrap: break-word;
 }
 
-.post-image {
+.post-image-outer {
+  grid-area: image;
   width: 70px;
   height: 70px;
+}
+
+.post-image {
+  display: block;
+  margin: 0 auto;
+  max-width: 43.4px;
+  height: auto;
   object-fit: contain;
-  grid-area: image;
 }
 
 .posts {
@@ -68,9 +75,15 @@
   .header {
     grid-template-columns: 84px 1fr;
   }
-  .post-image {
+
+  .post-image-outer {
+    grid-area: image;
     width: 84px;
     height: 84px;
+  }
+
+  .post-image {
+    max-width: 52.7px;
   }
 }
 

@@ -21,8 +21,8 @@
 }
 
 .title-image {
-  width: 120px;
-  height: 120px;
+  width: 100px;
+  height: 100px;
   margin: 0 auto;
   object-fit: contain;
   grid-area: image;
@@ -54,7 +54,7 @@
     grid-template-areas:
       "image title"
       "image publishedAt";
-    grid-template-columns: 120px 1fr;
+    grid-template-columns: 100px 1fr;
     grid-template-rows: 1fr auto;
     margin-bottom: 4rem;
   }

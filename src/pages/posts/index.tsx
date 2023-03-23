@@ -27,13 +27,15 @@ const Posts = ({ entries }: InferGetStaticPropsType<typeof getStaticProps>) => {
       <BaseHead title="posts | zi / @iz_dot" description="zi's posts" />
       <section className={style.section}>
         <header className={style.header}>
-          <Image
-            src="/post.png"
-            alt=""
-            width="70"
-            height="70"
-            className={style["post-image"]}
-          />
+          <div className={style["post-image-outer"]}>
+            <Image
+              src="/post.png"
+              alt=""
+              width="96"
+              height="153"
+              className={style["post-image"]}
+            />
+          </div>
           <h1 className={style["header-title"]}>Posts</h1>
           <Typography variant="h2" className={style["header-subtitle"]}>
             日々の考えや作ったもの置き場
@@ -47,6 +49,8 @@ const Posts = ({ entries }: InferGetStaticPropsType<typeof getStaticProps>) => {
                   <PostCard
                     title={content.title}
                     imageUrl={content.eyecatch.url}
+                    width={content.eyecatch.width}
+                    height={content.eyecatch.height}
                     publishedAt={new Date(content.publishedAt ?? "")}
                   />
                 </a>
