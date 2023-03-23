@@ -23,6 +23,7 @@ export const BaseHead: FC<Props> = ({ title, description, ogImage }) => {
       <meta property="og:description" content={description} />
       <meta property="og:type" content="website" />
       {ogImage && <meta property="og:image" content={ogImage} />}
+      <meta property="twitter:card" content="summary" />
     </Head>
   );
 };
