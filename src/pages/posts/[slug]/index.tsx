@@ -59,7 +59,7 @@ const Blog = ({ post }: InferGetStaticPropsType<typeof getStaticProps>) => {
       <BaseHead
         title={post.title}
         description={post.description ?? "ziのブログ"}
-        ogImage={post.ogImage.url}
+        ogImage={post.ogUrl}
       />
       <Link href="/posts" className={styles["back-to-post"]}>
         {"<- Back to Posts"}

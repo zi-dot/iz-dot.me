@@ -19,6 +19,6 @@ export type Blog = {
   description?: string;
   content: string;
   eyecatch: EyeCatch;
-  ogImage: EyeCatch;
+  ogUrl: string;
   category: Category[];
 } & MicroCMSDate;
