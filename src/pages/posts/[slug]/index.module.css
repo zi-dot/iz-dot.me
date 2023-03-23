@@ -1,5 +1,5 @@
 .back-to-post {
-  display: block;
+  display: inline-block;
   margin-top: 1.125rem;
   font-size: 1rem;
   text-decoration: none;
@@ -40,6 +40,15 @@
   color: rgba(var(--color-typo-light));
 }
 
+.divider {
+  width: 98%;
+  margin: auto;
+  border: none;
+  border-top-color: rgba(var(--color-typo-light), 0.5);
+  border-top-style: solid;
+  border-top-width: 1px;
+}
+
 @media screen and (min-width: 480px) {
   .title-wrapper {
     grid-template-areas:
@@ -52,87 +61,5 @@
 
   .title-image {
     margin: 0;
-  }
-}
-
-.cms {
-}
-
-.cms * {
-  word-break: keep-all;
-  overflow-wrap: break-word;
-}
-
-.cms h2 {
-  font-size: 1.5rem;
-  line-height: 1.4;
-  margin-top: 3rem;
-  font-weight: 700;
-}
-
-.cms h3 {
-  font-size: 1.3rem;
-  line-height: 1.4;
-  margin-top: 3rem;
-  font-weight: 700;
-}
-
-.cms h4 {
-  font-size: 1.1rem;
-  line-height: 1.4;
-  margin-top: 3rem;
-  font-weight: 700;
-}
-
-.cms h5 {
-  /* h5 is not used */
-}
-
-.cms p {
-  margin-top: 2rem;
-  line-height: 1.6;
-}
-
-.cms a {
-  color: rgb(var(--color-typo-secondary));
-  text-decoration: none;
-}
-
-.cms a:hover {
-  text-decoration: underline;
-}
-
-.cms ol {
-  margin: 1.5rem 0;
-  line-height: 1.7;
-}
-
-.cms ul {
-  margin: 1.5rem 0;
-  line-height: 1.7;
-}
-
-.cms li {
-  margin: 1rem 0;
-}
-
-.cms img {
-  border-radius: 0.5rem;
-  max-width: 100%;
-  height: auto;
-}
-
-.cms pre[class*="language-"] {
-  font-family: monospace;
-  font-size: 0.9rem;
-  padding: 1rem;
-  border-radius: 0.5rem;
-  vertical-align: 0.08em;
-  margin: 1.3rem 0;
-}
-
-@media screen and (min-width: 768px) {
-  .back-to-post {
-    margin-top: 2rem;
   }
 }

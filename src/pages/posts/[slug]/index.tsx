@@ -2,17 +2,17 @@ import { BaseHead } from "@/components/shared/BaseHead";
 import { getBlog, getBlogs } from "@/lib/cmsClient";
 import { Blog } from "@/types/cms";
 import { loadDefaultJapaneseParser } from "budoux";
-import { MicroCMSContentId } from "microcms-js-sdk";
+import { MicroCMSContentId, MicroCMSDate } from "microcms-js-sdk";
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
 import { ParsedUrlQuery } from "querystring";
 
 import styles from "./index.module.css";
-import "prismjs/themes/prism.css";
 
 import { markdownToHtml } from "@/utils/markdownToHtml";
 import Link from "next/link";
 import Image from "next/image";
 import { formatDate } from "@/utils/formatDate";
+import { PostContent } from "@/components/posts/PostContent";
 
 interface Params extends ParsedUrlQuery {
   slug: string;
@@ -32,10 +32,10 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
 };
 
 export const getStaticProps: GetStaticProps<{
-  post: (Blog & MicroCMSContentId) | null;
+  post: Blog & MicroCMSDate & MicroCMSContentId;
 }> = async ({ params }) => {
   const post = await getBlog(params?.slug as string);
-  if (post === null) return { props: { post } };
+  if (post === null) throw new Error("Post not found");
 
   const parser = loadDefaultJapaneseParser();
   const contentHtml = await markdownToHtml(post.content);
@@ -58,7 +58,7 @@ const Blog = ({ post }: InferGetStaticPropsType<typeof getStaticProps>) => {
     <>
       <BaseHead
         title={post.title}
-        description={post.description ?? ""}
+        description={post.description ?? "ziのブログ"}
         ogImage={post.eyecatch.url}
       />
       <Link href="/posts" className={styles["back-to-post"]}>
@@ -79,10 +79,8 @@ const Blog = ({ post }: InferGetStaticPropsType<typeof getStaticProps>) => {
           </p>
         )}
       </div>
-      <article
-        className={styles.cms}
-        dangerouslySetInnerHTML={{ __html: post.content }}
-      ></article>
+      <hr className={styles.divider} />
+      <PostContent html={post.content} />
     </>
   );
 };
