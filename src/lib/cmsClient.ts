@@ -12,11 +12,6 @@ if (apiKey === undefined || apiKey === "") {
   throw new Error("CMS_API_KEY is not defined");
 }
 
-console.log({
-  serviceDomain,
-  apiKey,
-});
-
 export const client = createClient({
   serviceDomain,
   apiKey,
