@@ -6,6 +6,7 @@ import { Blog } from "@/types/cms";
 import { MicroCMSListResponse } from "microcms-js-sdk";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import style from "./index.module.css";
 
 type Entries = MicroCMSListResponse<Blog>;
@@ -45,7 +46,7 @@ const Posts = ({ entries }: InferGetStaticPropsType<typeof getStaticProps>) => {
           {entries.contents.map((content, i) => {
             return (
               <li className={style.post} key={i} role="listitem">
-                <a href={`/posts/${content.id}`}>
+                <Link href={`/posts/${content.id}`}>
                   <PostCard
                     title={content.title}
                     imageUrl={content.eyecatch.url}
@@ -53,7 +54,7 @@ const Posts = ({ entries }: InferGetStaticPropsType<typeof getStaticProps>) => {
                     height={content.eyecatch.height}
                     publishedAt={new Date(content.publishedAt ?? "")}
                   />
-                </a>
+                </Link>
               </li>
             );
           })}
