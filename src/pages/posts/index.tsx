@@ -1,5 +1,6 @@
 import { PostCard } from "@/components/posts/PostCard";
 import { BaseHead } from "@/components/shared/BaseHead";
+import { TransitionLink } from "@/components/shared/TransitionLink";
 import { Typography } from "@/components/shared/Typography";
 import { getBlogs } from "@/lib/cmsClient";
 import { Blog } from "@/types/cms";
@@ -45,16 +46,24 @@ const Posts = ({ entries }: InferGetStaticPropsType<typeof getStaticProps>) => {
         <ul className={style.posts} role="list">
           {entries.contents.map((content, i) => {
             return (
-              <li className={style.post} key={i} role="listitem">
-                <Link href={`/posts/${content.id}`}>
+              <li
+                className={style.post}
+                key={i}
+                role="listitem"
+                style={{
+                  viewTransitionName: `post-${content.id}`,
+                }}
+              >
+                <TransitionLink href={`/posts/${content.id}`}>
                   <PostCard
+                    id={content.id}
                     title={content.title}
                     imageUrl={content.eyecatch.url}
                     width={content.eyecatch.width}
                     height={content.eyecatch.height}
                     publishedAt={new Date(content.publishedAt ?? "")}
                   />
-                </Link>
+                </TransitionLink>
               </li>
             );
           })}

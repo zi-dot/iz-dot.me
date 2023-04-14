@@ -4,6 +4,7 @@ import { FC } from "react";
 import styles from "./index.module.css";
 
 type Props = {
+  id: string;
   title: string;
   imageUrl: string;
   width: number;
@@ -12,6 +13,7 @@ type Props = {
 };
 
 export const PostCard: FC<Props> = ({
+  id,
   title,
   imageUrl,
   width,
@@ -26,9 +28,19 @@ export const PostCard: FC<Props> = ({
         height={height}
         alt=""
         className={styles["card-eyecatch"]}
+        style={{
+          viewTransitionName: `post-image-${id}`,
+        }}
       />
       <p className={styles["card-publish-date"]}>{formatDate(publishedAt)}</p>
-      <h3 className={styles["card-title"]}>{title}</h3>
+      <h3
+        className={styles["card-title"]}
+        style={{
+          viewTransitionName: `post-title-${id}`,
+        }}
+      >
+        {title}
+      </h3>
     </article>
   );
 };

@@ -6,6 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Typography } from "@/components/shared/Typography";
 import { BaseHead } from "@/components/shared/BaseHead";
+import { TransitionLink } from "@/components/shared/TransitionLink";
 
 export default function Home() {
   return (
@@ -49,7 +50,7 @@ export default function Home() {
           この辺でつぶいたり活動したりしています。
         </p>
         <div className={styles["links__tiles"]}>
-          <Link href="/posts" className={styles["tiles__posts"]}>
+          <TransitionLink href="/posts" className={styles["tiles__posts"]}>
             <p className={styles["tiles__posts-title"]}>Posts</p>
             <p className={styles["tiles__posts-description"]}>
               日々の
@@ -60,7 +61,7 @@ export default function Home() {
               <wbr />
               置き場
             </p>
-          </Link>
+          </TransitionLink>
           <a
             className={styles["tiles__twitter"]}
             target="_blank"

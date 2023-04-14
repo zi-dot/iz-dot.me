@@ -33,6 +33,7 @@
   font-size: 1.75rem;
   font-weight: 700;
   margin-bottom: 0.75rem;
+  width: fit-content;
 }
 
 .title-published-at {

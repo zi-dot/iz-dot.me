@@ -13,6 +13,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { formatDate } from "@/utils/formatDate";
 import { PostContent } from "@/components/posts/PostContent";
+import { TransitionLink } from "@/components/shared/TransitionLink";
 
 interface Params extends ParsedUrlQuery {
   slug: string;
@@ -61,26 +62,42 @@ const Blog = ({ post }: InferGetStaticPropsType<typeof getStaticProps>) => {
         description={post.description ?? "ziのブログ"}
         ogImage={post.ogUrl}
       />
-      <Link href="/posts" className={styles["back-to-post"]}>
+      <TransitionLink href="/posts" className={styles["back-to-post"]}>
         {"<- Back to Posts"}
-      </Link>
-      <div className={styles["title-wrapper"]}>
-        <Image
-          src={post.eyecatch.url}
-          alt=""
-          width={post.eyecatch.width}
-          height={post.eyecatch.height}
-          className={styles["title-image"]}
-        />
-        <h2 className={styles.title}>{post.title}</h2>
-        {post.publishedAt && (
-          <p className={styles["title-published-at"]}>
-            Published on {formatDate(new Date(post.publishedAt))}
-          </p>
-        )}
+      </TransitionLink>
+      <div
+        style={{
+          viewTransitionName: `post-${post.id}`,
+        }}
+      >
+        <div className={styles["title-wrapper"]}>
+          <Image
+            src={post.eyecatch.url}
+            alt=""
+            width={post.eyecatch.width}
+            height={post.eyecatch.height}
+            className={styles["title-image"]}
+            style={{
+              viewTransitionName: `post-image-${post.id}`,
+            }}
+          />
+          <h2
+            className={styles.title}
+            style={{
+              viewTransitionName: `post-title-${post.id}`,
+            }}
+          >
+            {post.title}
+          </h2>
+          {post.publishedAt && (
+            <p className={styles["title-published-at"]}>
+              Published on {formatDate(new Date(post.publishedAt))}
+            </p>
+          )}
+        </div>
+        <hr className={styles.divider} />
+        <PostContent html={post.content} />
       </div>
-      <hr className={styles.divider} />
-      <PostContent html={post.content} />
     </>
   );
 };

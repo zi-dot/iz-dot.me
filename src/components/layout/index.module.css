@@ -1,6 +1,6 @@
 .main {
   max-width: calc(780px + 24px * 2);
-  min-height: calc(100vh - 60px - 52px);
+  min-height: calc(90vh - 60px - 52px);
   margin: 0 auto;
   padding: 0 24px;
   background-color: rgb(var(--color-bg-base));

@@ -1,10 +1,10 @@
-"use client";
 import clsx from "clsx";
 import Image from "next/image";
-import Link from "next/link";
 import { FC, useMemo, useRef, useState } from "react";
 import styles from "./index.module.css";
+import viewTransitionName from "@/styles/viewTransitionName.module.css";
 import { usePathname } from "next/navigation";
+import { TransitionLink } from "../TransitionLink";
 
 type Props = {
   currentPath: NavList | undefined;
@@ -105,9 +105,9 @@ export const BaseHeader: FC<Props> = ({ currentPath }) => {
   };
 
   return (
-    <header className={styles.header}>
+    <header className={clsx(styles.header, viewTransitionName.header)}>
       <div className={styles["header__inner"]}>
-        <Link href="/" className={styles["header__logo"]}>
+        <TransitionLink href="/" className={styles["header__logo"]}>
           <Image
             src="/avator.png"
             width={120}
@@ -117,7 +117,7 @@ export const BaseHeader: FC<Props> = ({ currentPath }) => {
             quality="100"
           />
           <p className={styles["logo__name"]}>zi</p>
-        </Link>
+        </TransitionLink>
         <nav className={styles["header__nav"]}>
           <div className={styles["nav__arrow-outer"]}>
             <button
@@ -170,7 +170,7 @@ export const BaseHeader: FC<Props> = ({ currentPath }) => {
               }}
             >
               <li className={styles["nav__item"]} role="listitem">
-                <Link
+                <TransitionLink
                   className={clsx(
                     styles["nav__link"],
                     currentPath === "home" && styles.current
@@ -184,7 +184,7 @@ export const BaseHeader: FC<Props> = ({ currentPath }) => {
                   }}
                 >
                   home
-                </Link>
+                </TransitionLink>
               </li>
               <li
                 aria-hidden="true"
@@ -194,7 +194,7 @@ export const BaseHeader: FC<Props> = ({ currentPath }) => {
                 /
               </li>
               <li className={styles["nav__item"]}>
-                <Link
+                <TransitionLink
                   href="/posts"
                   className={clsx(
                     styles["nav__link"],
@@ -208,13 +208,13 @@ export const BaseHeader: FC<Props> = ({ currentPath }) => {
                   }}
                 >
                   posts
-                </Link>
+                </TransitionLink>
               </li>
               <li aria-hidden="true" className={styles["nav__item-separator"]}>
                 /
               </li>
               <li className={styles["nav__item"]}>
-                <Link
+                <TransitionLink
                   href="/about"
                   tabIndex={isClose ? -1 : 0}
                   className={clsx(
@@ -228,7 +228,7 @@ export const BaseHeader: FC<Props> = ({ currentPath }) => {
                   }}
                 >
                   about
-                </Link>
+                </TransitionLink>
               </li>
             </ul>
           </div>
