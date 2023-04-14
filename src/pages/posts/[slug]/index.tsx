@@ -14,6 +14,7 @@ import Image from "next/image";
 import { formatDate } from "@/utils/formatDate";
 import { PostContent } from "@/components/posts/PostContent";
 import { TransitionLink } from "@/components/shared/TransitionLink";
+import { CSSProperties } from "react";
 
 interface Params extends ParsedUrlQuery {
   slug: string;
@@ -66,9 +67,11 @@ const Blog = ({ post }: InferGetStaticPropsType<typeof getStaticProps>) => {
         {"<- Back to Posts"}
       </TransitionLink>
       <div
-        style={{
-          viewTransitionName: `post-${post.id}`,
-        }}
+        style={
+          {
+            viewTransitionName: `post-${post.id}`,
+          } as CSSProperties
+        }
       >
         <div className={styles["title-wrapper"]}>
           <Image
@@ -77,15 +80,19 @@ const Blog = ({ post }: InferGetStaticPropsType<typeof getStaticProps>) => {
             width={post.eyecatch.width}
             height={post.eyecatch.height}
             className={styles["title-image"]}
-            style={{
-              viewTransitionName: `post-image-${post.id}`,
-            }}
+            style={
+              {
+                viewTransitionName: `post-image-${post.id}`,
+              } as CSSProperties
+            }
           />
           <h2
             className={styles.title}
-            style={{
-              viewTransitionName: `post-title-${post.id}`,
-            }}
+            style={
+              {
+                viewTransitionName: `post-title-${post.id}`,
+              } as CSSProperties
+            }
           >
             {post.title}
           </h2>

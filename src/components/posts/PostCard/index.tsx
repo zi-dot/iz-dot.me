@@ -1,6 +1,6 @@
 import { formatDate } from "@/utils/formatDate";
 import Image from "next/image";
-import { FC } from "react";
+import { CSSProperties, FC } from "react";
 import styles from "./index.module.css";
 
 type Props = {
@@ -28,16 +28,20 @@ export const PostCard: FC<Props> = ({
         height={height}
         alt=""
         className={styles["card-eyecatch"]}
-        style={{
-          viewTransitionName: `post-image-${id}`,
-        }}
+        style={
+          {
+            viewTransitionName: `post-image-${id}`,
+          } as CSSProperties
+        }
       />
       <p className={styles["card-publish-date"]}>{formatDate(publishedAt)}</p>
       <h3
         className={styles["card-title"]}
-        style={{
-          viewTransitionName: `post-title-${id}`,
-        }}
+        style={
+          {
+            viewTransitionName: `post-title-${id}`,
+          } as CSSProperties
+        }
       >
         {title}
       </h3>

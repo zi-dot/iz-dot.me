@@ -12,7 +12,10 @@ type Props = {
 };
 
 export const TransitionLink = forwardRef<HTMLAnchorElement, Props>(
-  ({ href, children, id, className, tabIndex, onClick }, ref) => {
+  function TransitionLink(
+    { href, children, id, className, tabIndex, onClick },
+    ref
+  ) {
     const { routerPushWithTransition } = useViewTransitionRouterPush();
 
     const handleClick = useCallback(

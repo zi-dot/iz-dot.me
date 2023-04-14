@@ -7,8 +7,8 @@ import { Blog } from "@/types/cms";
 import { MicroCMSListResponse } from "microcms-js-sdk";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import style from "./index.module.css";
+import { CSSProperties } from "react";
 
 type Entries = MicroCMSListResponse<Blog>;
 
@@ -50,9 +50,11 @@ const Posts = ({ entries }: InferGetStaticPropsType<typeof getStaticProps>) => {
                 className={style.post}
                 key={i}
                 role="listitem"
-                style={{
-                  viewTransitionName: `post-${content.id}`,
-                }}
+                style={
+                  {
+                    viewTransitionName: `post-${content.id}`,
+                  } as CSSProperties
+                }
               >
                 <TransitionLink href={`/posts/${content.id}`}>
                   <PostCard
