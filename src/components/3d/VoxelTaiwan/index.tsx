@@ -1,11 +1,11 @@
 "use client";
 
 import { OrbitControls, OrthographicCamera, useGLTF } from "@react-three/drei";
-import { Canvas, ObjectMap, useFrame, useThree } from "@react-three/fiber";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { FC, RefObject, useCallback, useEffect, useRef } from "react";
 import { Group, Mesh } from "three";
 import * as THREE from "three";
-import { GLTF } from "three/examples/jsm/loaders/GLTFLoader";
+
 import styles from "./index.module.css";
 
 // BASE VIEWPORT = 1200
@@ -13,7 +13,7 @@ const BASE_RADIUS = 2.4;
 
 const Voxel = ({ meshRef }: { meshRef: RefObject<Mesh> }) => {
   const group = useRef<Group>(null);
-  const { nodes, materials } = useGLTF("/taiwan.glb") as GLTF & ObjectMap;
+  const { nodes, materials } = useGLTF("/taiwan.glb");
   const { camera, size } = useThree();
   const init = useRef(false);
 
