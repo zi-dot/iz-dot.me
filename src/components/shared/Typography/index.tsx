@@ -1,6 +1,5 @@
 import clsx from "clsx";
-import { createElement, Fragment } from "react";
-import { loadDefaultJapaneseParser } from "budoux";
+import { createElement } from "react";
 import styles from "./index.module.css";
 
 type Props = {
@@ -23,33 +22,12 @@ type Props = {
 };
 
 export const Typography = ({ children, variant, className }: Props) => {
-  const parser = loadDefaultJapaneseParser();
-  const text = parser.parse(children);
-
   if (!variant) {
-    return createElement(
-      Fragment,
-      undefined,
-      <>
-        {text.map((text) => (
-          <>
-            {text}
-            <wbr />
-          </>
-        ))}
-      </>
-    );
+    return <>{children}</>;
   }
   return createElement(
     variant,
     { className: clsx(styles.typography, className) },
-    <>
-      {text.map((text, i) => (
-        <Fragment key={`${text}__${i}`}>
-          {text}
-          <wbr />
-        </Fragment>
-      ))}
-    </>
+    <>{children}</>
   );
 };
