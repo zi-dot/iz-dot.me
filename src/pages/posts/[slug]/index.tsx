@@ -39,11 +39,12 @@ export const getStaticProps: GetStaticProps<{
 
   const contentHtml = await markdownToHtml(post.content);
 
-  post.content = contentHtml;
-
   return {
     props: {
-      post,
+      post: {
+        ...post,
+        content: contentHtml,
+      },
     },
   };
 };
