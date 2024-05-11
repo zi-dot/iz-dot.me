@@ -39,8 +39,8 @@ dependencies:
     specifier: ^0.13.0
     version: 0.13.0
   microcms-js-sdk:
-    specifier: ^2.7.0
-    version: 2.7.0
+    specifier: ^3.0.0
+    version: 3.1.1
   next:
     specifier: ^13.5.6
     version: 13.5.6(@babel/core@7.24.5)(react-dom@18.2.0)(react@18.2.0)
@@ -7365,14 +7365,6 @@ packages:
       cross-spawn: 7.0.3
     dev: false
 
-  /cross-fetch@3.1.8(encoding@0.1.13):
-    resolution: {integrity: sha512-cvA+JwZoU0Xq+h6WkMvAUqPEYy92Obet6UdKLfW60qn99ftItKjB5T+BkyWOFWe2pUyfQ+IJHmpOTznqk1M6Kg==}
-    dependencies:
-      node-fetch: 2.7.0(encoding@0.1.13)
-    transitivePeerDependencies:
-      - encoding
-    dev: false
-
   /cross-spawn@7.0.3:
     resolution: {integrity: sha512-iRDPJKUPVEND7dHPO8rkbOnPpyDygcDFtWjpeWNCgy8WP2rXcxXL8TskReQl6OrB2G7+UJrags1q15Fudc7G6w==}
     engines: {node: '>= 8'}
@@ -10410,13 +10402,11 @@ packages:
     engines: {node: '>= 0.6'}
     dev: true
 
-  /microcms-js-sdk@2.7.0:
-    resolution: {integrity: sha512-+d95LllQd4Pik5WM4mBf0YB39EpzR34Nl4gOQIDostRJBtS3rg/AgqQ91m08+4j/uxytnP00dnzJKJPu1GnwrA==}
+  /microcms-js-sdk@3.1.1:
+    resolution: {integrity: sha512-Lh234f+r4dje/1XxWNu4sMrjCrqkMkRoc9wr/WN5wsEngTa0ZLMXLNgZm3e74vw/HHj3ipYSJeCA2HyyguN37w==}
+    engines: {node: '>=18.0.0'}
     dependencies:
       async-retry: 1.3.3
-      cross-fetch: 3.1.8(encoding@0.1.13)
-      encoding: 0.1.13
-      qs: 6.12.0
     dev: false
 
   /micromark-core-commonmark@1.1.0:
@@ -10798,6 +10788,7 @@ packages:
     dependencies:
       encoding: 0.1.13
       whatwg-url: 5.0.0
+    dev: true
 
   /node-int64@0.4.0:
     resolution: {integrity: sha512-O5lz91xSOeoXP6DulyHfllpq+Eg00MWitZIbtPfoSEvqIHdl5gfcY6hYzDWnj0qD5tz52PI08u9qUvSVeUBeHw==}
@@ -11498,6 +11489,7 @@ packages:
     engines: {node: '>=0.6'}
     dependencies:
       side-channel: 1.0.6
+    dev: true
 
   /querystringify@2.2.0:
     resolution: {integrity: sha512-FIqgj2EUvTa7R50u0rGsyTftzjYmv/a3hO345bZNrqabNqjtgiDMgmo4mkUjd+nzU5oF3dClKqFIPUKybUyqoQ==}
@@ -12827,6 +12819,7 @@ packages:
 
   /tr46@0.0.3:
     resolution: {integrity: sha512-N3WMsuqV66lT30CrXNbEjx4GEwlow3v6rr4mCcv6prnfwhS01rkgyFdjPNBYd9br7LpXV1+Emh01fHnq2Gdgrw==}
+    dev: true
 
   /tr46@2.1.0:
     resolution: {integrity: sha512-15Ih7phfcdP5YxqiB+iDtLoaTz4Nd35+IiAv0kQ5FNKHzXgdWqPoTIqEDDJmXceQt4JZk6lVPT8lnDlPpGDppw==}
@@ -13406,6 +13399,7 @@ packages:
 
   /webidl-conversions@3.0.1:
     resolution: {integrity: sha512-2JAn3z8AR6rjK8Sm8orRC0h/bcl/DqL7tRPdGZ4I1CjdF+EaMLmYxBHyXuKL849eucPFhvBoxMsflfOb8kxaeQ==}
+    dev: true
 
   /webidl-conversions@5.0.0:
     resolution: {integrity: sha512-VlZwKPCkYKxQgeSbH5EyngOmRp7Ww7I9rQLERETtf5ofd9pGeswWiOtogpEO850jziPRarreGxn5QIiTqpb2wA==}
@@ -13503,6 +13497,7 @@ packages:
     dependencies:
       tr46: 0.0.3
       webidl-conversions: 3.0.1
+    dev: true
 
   /whatwg-url@8.7.0:
     resolution: {integrity: sha512-gAojqb/m9Q8a5IV96E3fHJM70AzCkgt4uXYX2O7EmuyOnLrViCQlsEBmF9UQIu3/aeAIp2U17rtbpZWNntQqdg==}
