@@ -1,6 +1,6 @@
 import { BaseHead } from "@/components/shared/BaseHead";
 import { getBlog, getBlogs } from "@/lib/cmsClient";
-import { Blog } from "@/types/cms";
+import { Blog as BlogType } from "@/types/cms";
 import { MicroCMSContentId, MicroCMSDate } from "microcms-js-sdk";
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
 import { ParsedUrlQuery } from "querystring";
@@ -32,7 +32,7 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
 };
 
 export const getStaticProps: GetStaticProps<{
-  post: Blog & MicroCMSDate & MicroCMSContentId;
+  post: BlogType & MicroCMSDate & MicroCMSContentId;
 }> = async ({ params }) => {
   const post = await getBlog(params?.slug as string);
   if (post === null) throw new Error("Post not found");

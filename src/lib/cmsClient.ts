@@ -15,12 +15,6 @@ if (apiKey === undefined || apiKey === "") {
 export const client = createClient({
   serviceDomain,
   apiKey,
-  customFetch: (url, options) => {
-    return fetch(url, {
-      ...options,
-      cache: "force-cache",
-    });
-  },
 });
 
 export const getBlogs = async () => {
