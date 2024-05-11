@@ -11,6 +11,7 @@ const nextConfig = {
   experimental: {
     swcTraceProfiling: true,
     swcMinify: true,
+    cpus: 4,
   },
 };
 
