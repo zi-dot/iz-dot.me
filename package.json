@@ -50,7 +50,6 @@
     "@types/three": "^0.164.0",
     "css-loader": "^6.11.0",
     "eslint-plugin-storybook": "^0.8.0",
-    "mini-css-extract-plugin": "^2.8.1",
     "postcss-loader": "^7.3.4",
     "storybook": "7.6.19",
     "style-loader": "^3.3.4"
