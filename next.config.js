@@ -8,6 +8,10 @@ const nextConfig = {
       },
     ],
   },
+  experimental: {
+    swcTraceProfiling: true,
+    swcMinify: true,
+  },
 };
 
 module.exports = nextConfig;
