@@ -22,7 +22,7 @@ dependencies:
     version: 14.2.3(eslint@9.2.0)(typescript@5.4.5)
   microcms-js-sdk:
     specifier: ^3.0.0
-    version: 3.0.0
+    version: 3.1.1
   next:
     specifier: ^14.0.0
     version: 14.0.0(@babel/core@7.24.5)(react-dom@18.3.1)(react@18.3.1)
@@ -7792,8 +7792,8 @@ packages:
     engines: {node: '>= 0.6'}
     dev: true
 
-  /microcms-js-sdk@3.0.0:
-    resolution: {integrity: sha512-aix+7SwXdI7tHk3IUJefB7nDfdz/5pIYtFJtDRff6q0IzdJsuOju6ReOS924q3fZnNOuKnnl4g4rm9f/WjwVBg==}
+  /microcms-js-sdk@3.1.1:
+    resolution: {integrity: sha512-Lh234f+r4dje/1XxWNu4sMrjCrqkMkRoc9wr/WN5wsEngTa0ZLMXLNgZm3e74vw/HHj3ipYSJeCA2HyyguN37w==}
     engines: {node: '>=18.0.0'}
     dependencies:
       async-retry: 1.3.3
