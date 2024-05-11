@@ -13,6 +13,7 @@ const nextConfig = {
     swcMinify: true,
     cpus: 4,
   },
+  output: "standalone",
 };
 
 module.exports = nextConfig;
