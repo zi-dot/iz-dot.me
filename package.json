@@ -52,6 +52,6 @@
     "eslint-plugin-storybook": "^0.8.0",
     "postcss-loader": "^7.3.4",
     "storybook": "7.0.0-rc.3",
-    "style-loader": "^3.3.4"
+    "style-loader": "^4.0.0"
   }
 }
