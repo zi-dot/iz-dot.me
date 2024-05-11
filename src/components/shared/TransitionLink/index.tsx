@@ -1,5 +1,7 @@
+"use client";
+
 import { useViewTransitionRouterPush } from "@/hooks/useViewTransitionRouterPush";
-import Link from "next/link";
+import NextLink from "next/link";
 import { forwardRef, useCallback } from "react";
 
 type Props = {
@@ -14,9 +16,9 @@ type Props = {
 export const TransitionLink = forwardRef<HTMLAnchorElement, Props>(
   function TransitionLink(
     { href, children, id, className, tabIndex, onClick },
-    ref
+    ref,
   ) {
-    const { routerPushWithTransition } = useViewTransitionRouterPush();
+    const { push } = useViewTransitionRouterPush();
 
     const handleClick = useCallback(
       (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -25,10 +27,10 @@ export const TransitionLink = forwardRef<HTMLAnchorElement, Props>(
           onClick(e);
         }
 
-        const to = e.currentTarget.href;
-        routerPushWithTransition(to);
+        const to = e.currentTarget.href.toString();
+        push(to);
       },
-      [routerPushWithTransition, onClick]
+      [push, onClick],
     );
 
     if (href === undefined) {
@@ -36,14 +38,14 @@ export const TransitionLink = forwardRef<HTMLAnchorElement, Props>(
     }
 
     return (
-      <Link
+      <NextLink
         href={href}
         onClick={handleClick}
         ref={ref}
         {...{ id, tabIndex, className }}
       >
         {children}
-      </Link>
+      </NextLink>
     );
-  }
+  },
 );

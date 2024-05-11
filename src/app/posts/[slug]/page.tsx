@@ -1,63 +1,40 @@
-import { BaseHead } from "@/components/shared/BaseHead";
-import { getBlog, getBlogs } from "@/lib/cmsClient";
-import { Blog as BlogType } from "@/types/cms";
-import { MicroCMSContentId, MicroCMSDate } from "microcms-js-sdk";
-import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
-import { ParsedUrlQuery } from "querystring";
-
-import styles from "./index.module.css";
-
-import { markdownToHtml } from "@/utils/markdownToHtml";
-import Image from "next/image";
-import { formatDate } from "@/utils/formatDate";
-import { PostContent } from "@/components/posts/PostContent";
 import { TransitionLink } from "@/components/shared/TransitionLink";
+import Image from "next/image";
+import { getBlog, getBlogs } from "@/lib/cmsClient";
+import { markdownToHtml } from "@/utils/markdownToHtml";
 import { CSSProperties } from "react";
 
-interface Params extends ParsedUrlQuery {
-  slug: string;
-}
+import styles from "./index.module.css";
+import { formatDate } from "@/utils/formatDate";
+import { PostContent } from "@/components/posts/PostContent";
 
-export const getStaticPaths: GetStaticPaths<Params> = async () => {
+export async function generateStaticParams() {
   const entries = await getBlogs();
 
-  const paths = entries.contents.map((entry) => ({
-    params: { slug: entry.id },
+  return entries.contents.map((entry) => ({
+    slug: entry.id,
   }));
+}
 
-  return {
-    paths,
-    fallback: false,
-  };
-};
-
-export const getStaticProps: GetStaticProps<{
-  post: BlogType & MicroCMSDate & MicroCMSContentId;
-}> = async ({ params }) => {
-  const post = await getBlog(params?.slug as string);
+async function getPost(slug: string) {
+  const post = await getBlog(slug);
   if (post === null) throw new Error("Post not found");
 
   const contentHtml = await markdownToHtml(post.content);
 
   return {
-    props: {
-      post: {
-        ...post,
-        content: contentHtml,
-      },
+    post: {
+      ...post,
+      content: contentHtml,
     },
   };
-};
+}
 
-const Blog = ({ post }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  if (post === null) return null;
+const Post = async ({ params }: { params: { slug: string } }) => {
+  const { post } = await getPost(params.slug);
+
   return (
     <>
-      <BaseHead
-        title={post.title}
-        description={post.description ?? "ziのブログ"}
-        ogImage={post.ogUrl}
-      />
       <TransitionLink href="/posts" className={styles["back-to-post"]}>
         {"<- Back to Posts"}
       </TransitionLink>
@@ -104,4 +81,4 @@ const Blog = ({ post }: InferGetStaticPropsType<typeof getStaticProps>) => {
   );
 };
 
-export default Blog;
+export default Post;
