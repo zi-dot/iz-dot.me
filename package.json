@@ -53,6 +53,6 @@
     "mini-css-extract-plugin": "^2.8.1",
     "postcss-loader": "^7.3.4",
     "storybook": "7.0.0-rc.3",
-    "style-loader": "^3.3.4"
+    "style-loader": "^4.0.0"
   }
 }
