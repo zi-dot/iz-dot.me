@@ -27,9 +27,9 @@ const Voxel = ({ meshRef }: { meshRef: RefObject<Mesh> }) => {
       new THREE.Vector3(
         0,
         scale * BASE_RADIUS * -1 + Math.sin(clock.getElapsedTime() * 0.8) * 0.1,
-        0
+        0,
       ),
-      1
+      1,
     );
   });
 
@@ -91,7 +91,7 @@ const CameraWithScrollControl = ({
 
     camera.position.lerp(
       new THREE.Vector3(cameraPosX, cameraPosY, cameraPosZ),
-      0.03
+      0.03,
     );
   }, [containerRef, camera]);
 
@@ -131,7 +131,7 @@ export const VoxelTaiwan: FC = () => {
     <div className={styles.container} id="" ref={containerRef}>
       <Canvas orthographic gl={{ antialias: false }}>
         <CameraWithScrollControl containerRef={containerRef} />
-        <ambientLight intensity={0.8} position={[0.5, 3, 2]} />
+        <ambientLight intensity={2} position={[0.5, 3, 2]} />
         <Voxel meshRef={meshRef} />
         <ResizeHandler meshRef={meshRef} />
         <OrbitControls enableZoom={false} />
