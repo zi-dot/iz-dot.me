@@ -1,32 +1,23 @@
-import { PostCard } from "@/components/posts/PostCard";
-import { BaseHead } from "@/components/shared/BaseHead";
-import { TransitionLink } from "@/components/shared/TransitionLink";
-import { Typography } from "@/components/shared/Typography";
 import { getBlogs } from "@/lib/cmsClient";
-import { Blog } from "@/types/cms";
-import { MicroCMSListResponse } from "microcms-js-sdk";
-import { GetStaticProps, InferGetStaticPropsType } from "next";
 import Image from "next/image";
-import style from "./index.module.css";
+import style from "./posts.module.css";
+import { Typography } from "@/components/shared/Typography";
 import { CSSProperties } from "react";
+import { TransitionLink } from "@/components/shared/TransitionLink";
+import { PostCard } from "@/components/posts/PostCard";
 
-type Entries = MicroCMSListResponse<Blog>;
-
-export const getStaticProps: GetStaticProps<{
-  entries: Entries;
-}> = async () => {
+const getEntries = async () => {
   const entries = await getBlogs();
   return {
-    props: {
-      entries,
-    },
+    entries,
   };
 };
 
-const Posts = ({ entries }: InferGetStaticPropsType<typeof getStaticProps>) => {
+const Posts = async () => {
+  const { entries } = await getEntries();
+
   return (
     <>
-      <BaseHead title="posts | zi / @iz_dot" description="zi's posts" />
       <section className={style.section}>
         <header className={style.header}>
           <div className={style["post-image-outer"]}>

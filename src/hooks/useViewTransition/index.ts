@@ -1,15 +1,23 @@
-export const useViewTransition = <T extends (...args: any[]) => void>(
-  callback: T
-) => {
-  const startViewTransition = (...args: Parameters<T>) => {
-    if (!(document as any).startViewTransition) {
-      callback(...args);
-      return;
-    }
+"use client";
+import { useCallback } from "react";
 
-    (document as any).startViewTransition(async () => {
-      await Promise.resolve(callback(...args));
-    });
-  };
+export const useViewTransition = <
+  T extends (...args: any[]) => Promise<void> | void,
+>(
+  callback: T,
+) => {
+  const startViewTransition = useCallback(
+    async (...args: Parameters<T>) => {
+      if (!document.startViewTransition) {
+        await callback(...args);
+        return;
+      }
+
+      document.startViewTransition(async () => {
+        await callback(...args);
+      });
+    },
+    [callback],
+  );
   return { startViewTransition };
 };

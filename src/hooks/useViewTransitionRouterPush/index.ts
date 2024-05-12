@@ -1,17 +1,30 @@
-import { useRouter } from "next/router";
+"use client";
+
+import { useRouter } from "next/navigation";
 import { useCallback } from "react";
 import { useViewTransition } from "../useViewTransition";
+import { Route } from "next";
 
 export const useViewTransitionRouterPush = () => {
   const router = useRouter();
+
   const routerPush = useCallback(
-    async (to: string) => {
-      await router.push(to);
+    (to: Route) => {
+      return new Promise<void>((resolve) => {
+        router.push(to);
+        setTimeout(() => {
+          resolve();
+        }, 0);
+      });
     },
-    [router]
+    [router],
   );
+
   const { startViewTransition: routerPushWithTransition } =
     useViewTransition(routerPush);
 
-  return { routerPushWithTransition };
+  return {
+    ...router,
+    push: routerPushWithTransition,
+  };
 };

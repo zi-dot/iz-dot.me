@@ -1,3 +1,5 @@
+"use client";
+
 import clsx from "clsx";
 import Image from "next/image";
 import { FC, useMemo, useRef, useState } from "react";
@@ -73,13 +75,13 @@ export const BaseHeader: FC<Props> = ({ currentPath }) => {
 
   const calcTranslateX = () => {
     const separatorWidth = Math.ceil(
-      separatorRef.current?.getBoundingClientRect().width ?? 22
+      separatorRef.current?.getBoundingClientRect().width ?? 22,
     );
     const postLinkWidth = Math.ceil(
-      postsLinkRef.current?.getBoundingClientRect().width ?? 44
+      postsLinkRef.current?.getBoundingClientRect().width ?? 44,
     );
     const aboutLinkWidth = Math.ceil(
-      aboutLinkRef.current?.getBoundingClientRect().width ?? 44
+      aboutLinkRef.current?.getBoundingClientRect().width ?? 44,
     );
     switch (currentPath) {
       case "home":
@@ -124,7 +126,7 @@ export const BaseHeader: FC<Props> = ({ currentPath }) => {
               aria-label="ナビゲーションを開く"
               className={clsx(
                 styles["nav__arrow"],
-                isClose && styles["nav__arrow--close"]
+                isClose && styles["nav__arrow--close"],
               )}
               onClick={() => setIsClose(!isClose)}
             >
@@ -173,7 +175,7 @@ export const BaseHeader: FC<Props> = ({ currentPath }) => {
                 <TransitionLink
                   className={clsx(
                     styles["nav__link"],
-                    currentPath === "home" && styles.current
+                    currentPath === "home" && styles.current,
                   )}
                   href="/"
                   ref={homeLinkRef}
@@ -198,7 +200,7 @@ export const BaseHeader: FC<Props> = ({ currentPath }) => {
                   href="/posts"
                   className={clsx(
                     styles["nav__link"],
-                    currentPath === "posts" && styles.current
+                    currentPath === "posts" && styles.current,
                   )}
                   tabIndex={isClose ? -1 : 0}
                   ref={postsLinkRef}
@@ -219,7 +221,7 @@ export const BaseHeader: FC<Props> = ({ currentPath }) => {
                   tabIndex={isClose ? -1 : 0}
                   className={clsx(
                     styles["nav__link"],
-                    currentPath === "about" && styles.current
+                    currentPath === "about" && styles.current,
                   )}
                   ref={aboutLinkRef}
                   id={ABOUNT_LINK_ID}

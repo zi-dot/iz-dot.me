@@ -8,6 +8,10 @@ const nextConfig = {
       },
     ],
   },
+  experimental: {
+    swcTraceProfiling: true,
+    cpus: 4,
+  },
 };
 
 module.exports = nextConfig;
