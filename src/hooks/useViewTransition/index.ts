@@ -1,7 +1,9 @@
 "use client";
 import { useCallback } from "react";
 
-export const useViewTransition = <T extends (...args: any[]) => Promise<void>>(
+export const useViewTransition = <
+  T extends (...args: any[]) => Promise<void> | void,
+>(
   callback: T,
 ) => {
   const startViewTransition = useCallback(

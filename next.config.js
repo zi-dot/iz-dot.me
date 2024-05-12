@@ -10,10 +10,8 @@ const nextConfig = {
   },
   experimental: {
     swcTraceProfiling: true,
-    swcMinify: true,
     cpus: 4,
   },
-  output: "standalone",
 };
 
 module.exports = nextConfig;
