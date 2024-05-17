@@ -15,7 +15,7 @@
     "@react-three/drei": "^9.105.6",
     "@react-three/fiber": "^8.16.6",
     "clsx": "^2.0.0",
-    "eslint": "9.2.0",
+    "eslint": "9.3.0",
     "eslint-config-next": "14.0.0",
     "microcms-js-sdk": "^3.0.0",
     "next": "14.0.0",
