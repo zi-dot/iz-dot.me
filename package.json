@@ -32,12 +32,12 @@
     "three": "^0.164.1"
   },
   "devDependencies": {
-    "@storybook/addon-essentials": "8.0.10",
-    "@storybook/addon-interactions": "8.0.10",
-    "@storybook/addon-links": "8.0.10",
-    "@storybook/blocks": "8.0.10",
-    "@storybook/nextjs": "8.0.10",
-    "@storybook/react": "8.0.10",
+    "@storybook/addon-essentials": "8.1.1",
+    "@storybook/addon-interactions": "8.1.1",
+    "@storybook/addon-links": "8.1.1",
+    "@storybook/blocks": "8.1.1",
+    "@storybook/nextjs": "8.1.1",
+    "@storybook/react": "8.1.1",
     "@storybook/testing-library": "0.2.2",
     "@types/node": "20.12.11",
     "@types/react": "18.3.1",
@@ -46,7 +46,7 @@
     "css-loader": "^7.1.1",
     "eslint-plugin-storybook": "^0.8.0",
     "postcss-loader": "^8.0.0",
-    "storybook": "8.0.10",
+    "storybook": "8.1.1",
     "style-loader": "^4.0.0",
     "typescript": "5.4.5"
   }
