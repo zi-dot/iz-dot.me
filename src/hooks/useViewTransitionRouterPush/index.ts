@@ -14,7 +14,7 @@ export const useViewTransitionRouterPush = () => {
         router.push(to);
         setTimeout(() => {
           resolve();
-        }, 0);
+        }, 100);
       });
     },
     [router],
