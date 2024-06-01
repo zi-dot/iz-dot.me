@@ -15,7 +15,7 @@
     "@react-three/drei": "^9.105.6",
     "@react-three/fiber": "^8.16.6",
     "clsx": "^2.0.0",
-    "eslint": "9.3.0",
+    "eslint": "9.4.0",
     "eslint-config-next": "14.2.3",
     "microcms-js-sdk": "^3.0.0",
     "next": "14.2.3",
@@ -29,7 +29,7 @@
     "remark-parse": "^11.0.0",
     "remark-rehype": "^11.0.0",
     "sharp": "0.33.4",
-    "three": "^0.164.1"
+    "three": "^0.165.0"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "8.1.5",
